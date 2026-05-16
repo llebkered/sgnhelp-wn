@@ -1,0 +1,40 @@
+<div class="form-group">
+    <label for="import_file">Import Levels (JSON in ZIP):</label>
+    <div id="ajax-upload-box">
+        <input type="file" id="import_file" name="import_file" accept=".zip" />
+        <button type="button" class="btn btn-primary" onclick="ajaxUploadImportFile()">Upload</button>
+    </div>
+    <div id="upload-status"></div>
+    <input type="hidden" id="uploaded_import_file" name="uploaded_import_file" value="" />
+</div>
+<script>
+function ajaxUploadImportFile() {
+    var fileInput = document.getElementById('import_file');
+    if (!fileInput.files.length) {
+        alert('Please select a file to upload.');
+        return;
+    }
+    var formData = new FormData();
+    formData.append('import_file', fileInput.files[0]);
+    fetch(window.location.pathname + '/onUploadImportFile', {
+        method: 'POST',
+        headers: {
+            'X-WINTER-REQUEST-HANDLER': 'onUploadImportFile',
+            'X-Requested-With': 'XMLHttpRequest',
+        },
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('upload-status').innerHTML = data.partial;
+        var hidden = document.getElementById('uploaded_import_file');
+        var match = data.partial.match(/value=\"([^"]+)\"/);
+        if (match) {
+            hidden.value = match[1];
+        }
+    })
+    .catch(() => {
+        document.getElementById('upload-status').innerHTML = '<div class="alert alert-danger">Upload failed.</div>';
+    });
+}
+</script>

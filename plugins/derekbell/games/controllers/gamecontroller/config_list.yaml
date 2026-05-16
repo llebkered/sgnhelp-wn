@@ -1,0 +1,16 @@
+title: GameController
+modelClass: DerekBell\Games\Models\Game
+list: $/derekbell/games/models/games/columns.yaml
+recordUrl: 'derekbell/games/gamecontroller/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+recordsPerPage: 20
+showSetup: true
+showCheckboxes: true
+showSorting: false
+defaultSort:
+    column: title
+    direction: asc
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

@@ -1,0 +1,28 @@
+title = "Games"
+url = "/games"
+layout = "default"
+meta_description = "SGN Help: walkthroughs, tips, and level guides for your favourite games."
+
+==
+<?php
+use DerekBell\Games\Models\Game;
+
+function onStart() {
+    $this['games'] = Game::where('is_published', 1)->orderBy('is_promoted', 'desc')->orderBy('title')->get();
+}
+
+?>
+
+==
+
+<h1>{{ title }}</h1>
+
+<div class="grid-320">
+    {% for game in games %}
+        <a href="{{ 'game' | page({slug: game.slug}) }}" class="{% if game.is_promoted %}card--large{% endif %}" aria-label="{{ game.title }} details">
+            <article class="card">
+                <h2>{{ game.title }}</h2>
+            </article>
+        </a>
+    {% endfor %}
+</div>

@@ -1,0 +1,28 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.22:
+    - 'Combined table migrations to one file'
+    - builder_table_combined_migration.php
+1.0.23:
+    - 'Rename episodes_id to episode_id in levels table'
+    - rename_episodes_id_column.php
+1.0.24:
+    - 'Add soft deletes to games, episodes, and levels tables'
+    - add_soft_deletes.php
+1.0.26:
+    - 'Add indexes to frequently queried columns for performance optimization'
+    - add_indexes_to_tables.php
+1.0.27:
+    - 'Add unique episode number per game'
+    - add_unique_episode_per_game.php
+1.0.28:
+    - 'Add database indexes for levels query optimization'
+    - add_levels_query_indexes.php
+1.0.29:
+    - 'Add colour theme field to games table'
+    - add_color_theme_to_games.php
+1.0.30:
+    - 'Add Games plugin settings with configurable bulk level limits'
+1.0.31:
+    - 'Fix youtube_id column default from xxxx to null'
+    - fix_youtube_id_default.php

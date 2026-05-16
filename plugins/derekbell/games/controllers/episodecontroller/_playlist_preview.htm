@@ -1,0 +1,49 @@
+<?php if (count($items ?? []) > 0): ?>
+<div class="callout callout-success">
+    <div class="header">
+        <h3>Found <?= count($items) ?> videos in playlist</h3>
+    </div>
+</div>
+
+<div class="playlist-items-list">
+    <?php foreach ($items as $index => $item): ?>
+        <div class="playlist-item">
+            <?php if ($item['thumbnail_url']): ?>
+                <img src="<?= e($item['thumbnail_url']) ?>" alt="Thumbnail" class="playlist-item-thumbnail" />
+            <?php endif; ?>
+            <div class="playlist-item-details">
+                <div class="playlist-item-title"><?= $index + 1 ?>. <?= e($item['title']) ?></div>
+                <div class="playlist-item-description"><?= e(substr($item['description'], 0, 150)) ?><?= strlen($item['description']) > 150 ? '...' : '' ?></div>
+                <small class="text-muted">Video ID: <?= e($item['video_id']) ?></small>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
+
+<div class="form-buttons">
+    <button
+        type="button"
+        class="btn btn-primary btn-lg"
+        data-request="onConfirmImportPlaylist"
+        data-request-data="episode_id: <?= $episodeId ?>"
+        data-request-confirm="This will create <?= count($items) ?> new levels for this episode. Continue?"
+        data-stripe-load-indicator
+    >
+        <i class="icon-check"></i> Import <?= count($items) ?> Videos as Levels
+    </button>
+    <button type="button" class="btn btn-default btn-lg" onclick="$('#playlist-preview').html('')">
+        Cancel
+    </button>
+</div>
+
+<?php elseif (isset($error)): ?>
+<div class="callout callout-danger">
+    <div class="header">
+        <i class="icon-warning"></i>
+        <h3>Error Loading Playlist</h3>
+    </div>
+    <div class="content">
+        <p><?= e($error) ?></p>
+    </div>
+</div>
+<?php endif; ?>

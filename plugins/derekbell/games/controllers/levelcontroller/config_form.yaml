@@ -1,0 +1,10 @@
+name: LevelController
+form: $/derekbell/games/models/levels/fields.yaml
+modelClass: DerekBell\Games\Models\Level
+defaultRedirect: derekbell/games/levelcontroller
+create:
+    redirect: 'derekbell/games/levelcontroller/update/:id'
+    redirectClose: derekbell/games/levelcontroller
+update:
+    redirect: 'derekbell/games/levelcontroller/update/:id'
+    redirectClose: derekbell/games/levelcontroller

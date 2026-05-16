@@ -1,0 +1,88 @@
+title = "Level"
+url = "/game/:game/:episode/:level"
+is_hidden = 0
+layout = "default"
+
+==
+<?php
+use DerekBell\Games\Models\Game;
+use DerekBell\Games\Models\Episode;
+use DerekBell\Games\Models\Level;
+
+function onStart() {
+    // get episode id based on game and episode params
+    $game_slug = $this->param('game');
+    $episode_slug = $this->param('episode');
+    $level_slug = $this->param('level');
+
+    // get game id based on game slug
+    $game = Game::where('slug', $game_slug)->first();
+
+    if (!$game) {
+        return $this->controller->run('404');
+    }
+
+    $this['game'] = $game;
+    $this['colorTheme'] = $game->color_theme ?? 'default';
+
+    // get episode id based on game id and episode slug
+    $episode = Episode::where('game_id', $game->id)->where('slug', $episode_slug)->first();
+
+    if (!$episode) {
+        return $this->controller->run('404');
+    }
+
+    $this['episode'] = $episode;
+
+    // get level id based on episode id and level slug
+    $level = Level::where('episode_id', $episode->id)->where('slug', $level_slug)->first();
+
+    if (!$level) {
+        return $this->controller->run('404');
+    }
+
+    $this['level'] = $level;
+
+    // Set page title and SEO meta tags
+    $this->page->title = $game->title . ' - ' . $episode->title . ' - ' . $level->title;
+    $this->page->meta_title = $game->title . ' - ' . $episode->title . ' - ' . $level->title;
+    $this->page->meta_description = $level->description ?? 'Play ' . $level->title . ' in ' . $episode->title . ' from ' . $game->title;
+}
+
+?>
+==
+{% put head %}
+    {% if game.color_theme and game.color_theme != 'default' %}
+        <link rel="stylesheet" href="{{ ('assets/css/' ~ game.color_theme ~ '-style.css') | theme }}">
+    {% endif %}
+{% endput %}
+
+{% set colorTheme = game.color_theme %}
+
+<nav aria-label="breadcrumb">
+    <ul>
+        <li><a href="/" aria-label="Home">Home</a></li>
+        <li><a href="{{ 'game' | page({slug: game.slug}) }}" aria-label="Game: {{ game.title }}">{{ game.title }}</a></li>
+        <li><a href="{{ 'episode' | page({game: game.slug, episode: episode.slug}) }}" aria-label="Episode: {{ episode.title }}">{{ episode.title }}</a></li>
+        <li>{{ level.title }}</li>
+    </ul>
+</nav>
+
+<h1>{{ level.title }}</h1>
+
+<article>
+    <div class="youtube">
+        <iframe
+            src="https://www.youtube.com/embed/{{ level.youtube_id }}"
+            title="{{ level.title }} — {{ episode.title }} — {{ game.title }}"
+            loading="lazy"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+        ></iframe>
+    </div>
+    {% if level.description %}
+    <footer>
+    {{ level.description | raw }}
+    </footer>
+    {% endif %}
+</article>

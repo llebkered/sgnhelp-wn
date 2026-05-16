@@ -1,0 +1,15 @@
+fields:
+
+    max_bulk_levels:
+        label: Maximum Levels per Scaffold
+        comment: The maximum number of empty levels that can be created in a single scaffold operation (1–1000).
+        type: number
+        default: 100
+        span: left
+
+    max_playlist_levels:
+        label: Maximum Levels per Playlist Import
+        comment: The maximum number of levels that can be imported from a single YouTube playlist (1–5000).
+        type: number
+        default: 500
+        span: right

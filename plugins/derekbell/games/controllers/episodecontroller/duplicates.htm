@@ -1,0 +1,90 @@
+<?php Block::put('breadcrumb') ?>
+    <ul>
+        <li><a href="<?= Backend::url('derekbell/games/episodecontroller') ?>">Episodes</a></li>
+        <li><?= e($this->pageTitle) ?></li>
+    </ul>
+<?php Block::endPut() ?>
+
+<?php
+    $sortUrl = function ($column) use ($sortColumn, $sortDirection) {
+        $direction = $sortColumn === $column && $sortDirection === 'asc' ? 'desc' : 'asc';
+        return Backend::url('derekbell/games/episodecontroller/duplicates') . '?sort=' . urlencode($column) . '&dir=' . urlencode($direction);
+    };
+
+    $sortIndicator = function ($column) use ($sortColumn, $sortDirection) {
+        if ($sortColumn !== $column) {
+            return '';
+        }
+
+        return $sortDirection === 'asc' ? ' ↑' : ' ↓';
+    };
+?>
+
+<div class="layout">
+    <div class="control-toolbar">
+        <div class="toolbar-item">
+            <a href="<?= Backend::url('derekbell/games/episodecontroller') ?>" class="btn btn-default oc-icon-angle-left">
+                Back to Episodes
+            </a>
+        </div>
+    </div>
+
+    <p class="help-block">
+        This page flags duplicate episodes by matching title, slug, or episode number within the same game after trimming whitespace and ignoring case where applicable. Select the duplicate records you want to remove. Deletions use the model delete flow, so episodes are soft-deleted.
+    </p>
+
+    <?php if ($duplicateEpisodes->isEmpty()): ?>
+        <p class="flash-message static success">No duplicate episodes were found.</p>
+    <?php else: ?>
+        <?= Form::open(['data-request' => 'onDeleteDuplicates']) ?>
+            <div class="form-buttons" style="margin-bottom: 16px;">
+                <button
+                    type="submit"
+                    class="btn btn-danger"
+                    data-request-confirm="Delete the selected duplicate episodes?">
+                    Delete Selected Duplicates
+                </button>
+            </div>
+
+            <div class="control-list list-flush">
+                <table class="table data">
+                    <thead>
+                        <tr>
+                            <th style="width: 40px;"></th>
+                            <th><a href="<?= $sortUrl('id') ?>">ID<?= $sortIndicator('id') ?></a></th>
+                            <th><a href="<?= $sortUrl('title') ?>">Title<?= $sortIndicator('title') ?></a></th>
+                            <th><a href="<?= $sortUrl('slug') ?>">Slug<?= $sortIndicator('slug') ?></a></th>
+                            <th><a href="<?= $sortUrl('game') ?>">Game<?= $sortIndicator('game') ?></a></th>
+                            <th><a href="<?= $sortUrl('episode_number') ?>">Episode #<?= $sortIndicator('episode_number') ?></a></th>
+                            <th><a href="<?= $sortUrl('levels_count') ?>">Levels<?= $sortIndicator('levels_count') ?></a></th>
+                            <th><a href="<?= $sortUrl('reasons') ?>">Duplicate Reason<?= $sortIndicator('reasons') ?></a></th>
+                            <th><a href="<?= $sortUrl('is_published') ?>">Published<?= $sortIndicator('is_published') ?></a></th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($duplicateEpisodes as $row): ?>
+                            <?php $episode = $row['episode']; ?>
+                            <tr>
+                                <td><input type="checkbox" name="episode_ids[]" value="<?= $episode->id ?>"></td>
+                                <td><?= $episode->id ?></td>
+                                <td><?= e($episode->title) ?></td>
+                                <td><?= e($episode->slug) ?></td>
+                                <td><?= e(optional($episode->game)->title) ?></td>
+                                <td><?= e($episode->episode_number) ?></td>
+                                <td><?= $episode->levels_count ?></td>
+                                <td><?= e($row['reasons']) ?></td>
+                                <td><?= $episode->is_published ? 'Yes' : 'No' ?></td>
+                                <td>
+                                    <a href="<?= Backend::url('derekbell/games/episodecontroller/update/' . $episode->id) ?>" class="btn btn-xs btn-default">
+                                        Open
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div>
+        <?= Form::close() ?>
+    <?php endif ?>
+</div>

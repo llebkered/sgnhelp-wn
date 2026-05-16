@@ -1,0 +1,10 @@
+name: EpisodeController
+form: $/derekbell/games/models/episodes/fields.yaml
+modelClass: DerekBell\Games\Models\Episode
+defaultRedirect: derekbell/games/episodecontroller
+create:
+    redirect: 'derekbell/games/episodecontroller/update/:id'
+    redirectClose: derekbell/games/episodecontroller
+update:
+    redirect: derekbell/games/episodecontroller
+    redirectClose: derekbell/games/episodecontroller

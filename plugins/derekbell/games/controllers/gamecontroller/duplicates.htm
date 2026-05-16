@@ -1,0 +1,86 @@
+<?php Block::put('breadcrumb') ?>
+    <ul>
+        <li><a href="<?= Backend::url('derekbell/games/gamecontroller') ?>">Games</a></li>
+        <li><?= e($this->pageTitle) ?></li>
+    </ul>
+<?php Block::endPut() ?>
+
+<?php
+    $sortUrl = function ($column) use ($sortColumn, $sortDirection) {
+        $direction = $sortColumn === $column && $sortDirection === 'asc' ? 'desc' : 'asc';
+        return Backend::url('derekbell/games/gamecontroller/duplicates') . '?sort=' . urlencode($column) . '&dir=' . urlencode($direction);
+    };
+
+    $sortIndicator = function ($column) use ($sortColumn, $sortDirection) {
+        if ($sortColumn !== $column) {
+            return '';
+        }
+
+        return $sortDirection === 'asc' ? ' ↑' : ' ↓';
+    };
+?>
+
+<div class="layout">
+    <div class="control-toolbar">
+        <div class="toolbar-item">
+            <a href="<?= Backend::url('derekbell/games/gamecontroller') ?>" class="btn btn-default oc-icon-angle-left">
+                Back to Games
+            </a>
+        </div>
+    </div>
+
+    <p class="help-block">
+        This page flags duplicate games by matching title or slug after trimming whitespace and ignoring case. Select the duplicate records you want to remove. Deletions use the model delete flow, so games are soft-deleted.
+    </p>
+
+    <?php if ($duplicateGames->isEmpty()): ?>
+        <p class="flash-message static success">No duplicate games were found.</p>
+    <?php else: ?>
+        <?= Form::open(['data-request' => 'onDeleteDuplicates']) ?>
+            <div class="form-buttons" style="margin-bottom: 16px;">
+                <button
+                    type="submit"
+                    class="btn btn-danger"
+                    data-request-confirm="Delete the selected duplicate games?">
+                    Delete Selected Duplicates
+                </button>
+            </div>
+
+            <div class="control-list list-flush">
+                <table class="table data">
+                    <thead>
+                        <tr>
+                            <th style="width: 40px;"></th>
+                            <th><a href="<?= $sortUrl('id') ?>">ID<?= $sortIndicator('id') ?></a></th>
+                            <th><a href="<?= $sortUrl('title') ?>">Title<?= $sortIndicator('title') ?></a></th>
+                            <th><a href="<?= $sortUrl('slug') ?>">Slug<?= $sortIndicator('slug') ?></a></th>
+                            <th><a href="<?= $sortUrl('reasons') ?>">Duplicate Reason<?= $sortIndicator('reasons') ?></a></th>
+                            <th><a href="<?= $sortUrl('episodes_count') ?>">Episodes<?= $sortIndicator('episodes_count') ?></a></th>
+                            <th><a href="<?= $sortUrl('is_published') ?>">Published<?= $sortIndicator('is_published') ?></a></th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($duplicateGames as $row): ?>
+                            <?php $game = $row['game']; ?>
+                            <tr>
+                                <td><input type="checkbox" name="game_ids[]" value="<?= $game->id ?>"></td>
+                                <td><?= $game->id ?></td>
+                                <td><?= e($game->title) ?></td>
+                                <td><?= e($game->slug) ?></td>
+                                <td><?= e($row['reasons']) ?></td>
+                                <td><?= $game->episodes_count ?></td>
+                                <td><?= $game->is_published ? 'Yes' : 'No' ?></td>
+                                <td>
+                                    <a href="<?= Backend::url('derekbell/games/gamecontroller/update/' . $game->id) ?>" class="btn btn-xs btn-default">
+                                        Open
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div>
+        <?= Form::close() ?>
+    <?php endif ?>
+</div>

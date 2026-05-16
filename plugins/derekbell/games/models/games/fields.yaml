@@ -1,0 +1,43 @@
+fields:
+    title:
+        label: Title
+        span: auto
+        type: text
+    slug:
+        label: Slug
+        span: auto
+        preset:
+            field: title
+            type: slug
+        type: text
+    excerpt:
+        label: Excerpt
+        size: small
+        span: full
+        type: richeditor
+    description:
+        label: Description
+        size: large
+        span: full
+        type: richeditor
+    is_published:
+        label: Published
+        span: auto
+        type: switch
+    is_promoted:
+        label: Promoted
+        span: auto
+        type: switch
+    color_theme:
+        label: Colour Theme
+        type: partial
+        path: $/derekbell/games/controllers/gamecontroller/_field_color_theme.htm
+    logo:
+        label: Logo
+        mode: file
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload

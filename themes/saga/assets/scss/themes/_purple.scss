@@ -1,0 +1,29 @@
+/* Purple theme - Light */
+:root[data-theme="purple"],
+[data-theme="purple"] {
+    --pico-primary: #a855f7;
+    --pico-primary-hover: #9333ea;
+    --pico-primary-focus: rgba(168, 85, 247, 0.25);
+    --pico-primary-inverse: #fff;
+    --pico-background-color: #faf5ff;
+    --pico-color: #1c1917;
+    --pico-card-background-color: #ffffff;
+    --pico-card-border-color: #d8b4fe;
+    --pico-secondary: #c084fc;
+    --pico-secondary-hover: #a855f7;
+}
+
+/* Purple theme - Dark */
+:root[data-theme="purple-dark"],
+[data-theme="purple-dark"] {
+    --pico-primary: #c084fc;
+    --pico-primary-hover: #d8b4fe;
+    --pico-primary-focus: rgba(192, 132, 252, 0.25);
+    --pico-primary-inverse: #1c1917;
+    --pico-background-color: #140a1e;
+    --pico-color: #faf5ff;
+    --pico-card-background-color: #24102e;
+    --pico-card-border-color: #6b21a8;
+    --pico-secondary: #9333ea;
+    --pico-secondary-hover: #a855f7;
+}

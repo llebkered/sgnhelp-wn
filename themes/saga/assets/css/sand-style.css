@@ -1,0 +1,29 @@
+/* Sand theme - Light */
+:root[data-theme="sand"],
+[data-theme="sand"] {
+    --pico-primary: #f4a460;
+    --pico-primary-hover: #e8753b;
+    --pico-primary-focus: rgba(244, 164, 96, 0.25);
+    --pico-primary-inverse: #fff;
+    --pico-background-color: #fef7ed;
+    --pico-color: #1c1917;
+    --pico-card-background-color: #ffffff;
+    --pico-card-border-color: #f8d4b0;
+    --pico-secondary: #f8b696;
+    --pico-secondary-hover: #f4a460;
+}
+
+/* Sand theme - Dark */
+:root[data-theme="sand-dark"],
+[data-theme="sand-dark"] {
+    --pico-primary: #f8b696;
+    --pico-primary-hover: #f8d4b0;
+    --pico-primary-focus: rgba(248, 182, 150, 0.25);
+    --pico-primary-inverse: #1c1917;
+    --pico-background-color: #16120a;
+    --pico-color: #fef7ed;
+    --pico-card-background-color: #221e10;
+    --pico-card-border-color: #78451a;
+    --pico-secondary: #e8753b;
+    --pico-secondary-hover: #f4a460;
+}

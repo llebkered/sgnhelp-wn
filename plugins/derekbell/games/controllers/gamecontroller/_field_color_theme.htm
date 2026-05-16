@@ -1,0 +1,105 @@
+<?php
+    $fieldName = $field->getName();
+    $fieldValue = $field->value ?? 'default';
+
+    $colorMap = [
+        'default'  => '#1f6feb',
+        'amber'    => '#f59e0b',
+        'azure'    => '#0ea5e9',
+        'blue'     => '#3b82f6',
+        'cyan'     => '#06b6d4',
+        'fuchsia'  => '#d946ef',
+        'green'    => '#22c55e',
+        'grey'     => '#6b7280',
+        'indigo'   => '#4f46e5',
+        'jade'     => '#14b8a6',
+        'lime'     => '#84cc16',
+        'orange'   => '#fb923c',
+        'pink'     => '#ec4899',
+        'pumpkin'  => '#f97316',
+        'purple'   => '#a855f7',
+        'red'      => '#ef4444',
+        'sand'     => '#f4a460',
+        'slate'    => '#64748b',
+        'violet'   => '#7c3aed',
+        'yellow'   => '#eab308',
+        'zinc'     => '#71717a',
+    ];
+?>
+
+<div class="form-group span-left" id="colorThemeField">
+    <label><?= e($field->label) ?></label>
+    <div class="color-theme-picker" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px;">
+        <?php foreach ($colorMap as $key => $hex): ?>
+            <label
+                class="color-theme-option"
+                style="
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    padding: 6px 12px 6px 8px;
+                    border: 2px solid <?= $fieldValue === $key ? $hex : '#dee2e6' ?>;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    background: <?= $fieldValue === $key ? $hex . '15' : 'transparent' ?>;
+                    transition: all 0.15s ease;
+                    font-size: 13px;
+                "
+                data-color-key="<?= $key ?>"
+            >
+                <input
+                    type="radio"
+                    name="<?= $fieldName ?>"
+                    value="<?= $key ?>"
+                    <?= $fieldValue === $key ? 'checked' : '' ?>
+                    style="display: none;"
+                />
+                <span style="
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 4px;
+                    background-color: <?= $hex ?>;
+                    border: 1px solid rgba(0,0,0,0.15);
+                    flex-shrink: 0;
+                "></span>
+                <span style="text-transform: capitalize;"><?= e(ucfirst($key)) ?></span>
+            </label>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+<style>
+    .color-theme-option:hover {
+        border-color: #adb5bd !important;
+        background: #f8f9fa !important;
+    }
+</style>
+
+<script>
+    (function() {
+        var container = document.getElementById('colorThemeField');
+        if (!container) return;
+
+        container.addEventListener('click', function(e) {
+            var label = e.target.closest('.color-theme-option');
+            if (!label) return;
+
+            var radio = label.querySelector('input[type="radio"]');
+            if (!radio) return;
+
+            radio.checked = true;
+
+            var colorMap = <?= json_encode($colorMap) ?>;
+
+            container.querySelectorAll('.color-theme-option').forEach(function(opt) {
+                opt.style.borderColor = '#dee2e6';
+                opt.style.background = 'transparent';
+            });
+
+            var hex = colorMap[radio.value] || '#dee2e6';
+            label.style.borderColor = hex;
+            label.style.background = hex + '15';
+        });
+    })();
+</script>

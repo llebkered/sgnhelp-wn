@@ -1,0 +1,29 @@
+/* Violet theme - Light */
+:root[data-theme="violet"],
+[data-theme="violet"] {
+    --pico-primary: #7c3aed;
+    --pico-primary-hover: #6d28d9;
+    --pico-primary-focus: rgba(124, 58, 237, 0.25);
+    --pico-primary-inverse: #fff;
+    --pico-background-color: #f5f3ff;
+    --pico-color: #1c1917;
+    --pico-card-background-color: #ffffff;
+    --pico-card-border-color: #c4b5fd;
+    --pico-secondary: #a78bfa;
+    --pico-secondary-hover: #7c3aed;
+}
+
+/* Violet theme - Dark */
+:root[data-theme="violet-dark"],
+[data-theme="violet-dark"] {
+    --pico-primary: #a78bfa;
+    --pico-primary-hover: #c4b5fd;
+    --pico-primary-focus: rgba(167, 139, 250, 0.25);
+    --pico-primary-inverse: #1c1917;
+    --pico-background-color: #0f0a1e;
+    --pico-color: #f5f3ff;
+    --pico-card-background-color: #1e102e;
+    --pico-card-border-color: #5b21b6;
+    --pico-secondary: #6d28d9;
+    --pico-secondary-hover: #7c3aed;
+}

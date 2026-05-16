@@ -1,0 +1,248 @@
+/* PicoCSS color variables for light and dark themes */
+:root {
+    /* Light theme colors */
+    --pico-color-red-50: #fef2f2;
+    --pico-color-red-100: #fee2e2;
+    --pico-color-red-200: #fecaca;
+    --pico-color-red-300: #fca5a5;
+    --pico-color-red-400: #f87171;
+    --pico-color-red-500: #ef4444;
+    --pico-color-red-600: #dc2626;
+    --pico-color-red-700: #b91c1c;
+    --pico-color-red-800: #991b1b;
+    --pico-color-red-900: #7f1d1d;
+
+    --pico-color-pink-50: #fdf2f8;
+    --pico-color-pink-100: #fce7f3;
+    --pico-color-pink-200: #fbcfe8;
+    --pico-color-pink-300: #f9a8d4;
+    --pico-color-pink-400: #f472b6;
+    --pico-color-pink-500: #ec4899;
+    --pico-color-pink-600: #db2777;
+    --pico-color-pink-700: #be185d;
+    --pico-color-pink-800: #9d174d;
+    --pico-color-pink-900: #831843;
+
+    --pico-color-purple-50: #faf5ff;
+    --pico-color-purple-100: #f3e8ff;
+    --pico-color-purple-200: #e9d5ff;
+    --pico-color-purple-300: #d8b4fe;
+    --pico-color-purple-400: #c084fc;
+    --pico-color-purple-500: #a855f7;
+    --pico-color-purple-600: #9333ea;
+    --pico-color-purple-700: #7c3aed;
+    --pico-color-purple-800: #6b21a8;
+    --pico-color-purple-900: #581c87;
+
+    --pico-color-indigo-50: #eef2ff;
+    --pico-color-indigo-100: #e0e7ff;
+    --pico-color-indigo-200: #c7d2fe;
+    --pico-color-indigo-300: #a5b4fc;
+    --pico-color-indigo-400: #818cf8;
+    --pico-color-indigo-500: #6366f1;
+    --pico-color-indigo-600: #4f46e5;
+    --pico-color-indigo-700: #4338ca;
+    --pico-color-indigo-800: #3730a3;
+    --pico-color-indigo-900: #312e81;
+
+    --pico-color-blue-50: #eff6ff;
+    --pico-color-blue-100: #dbeafe;
+    --pico-color-blue-200: #bfdbfe;
+    --pico-color-blue-300: #93c5fd;
+    --pico-color-blue-400: #60a5fa;
+    --pico-color-blue-500: #3b82f6;
+    --pico-color-blue-600: #2563eb;
+    --pico-color-blue-700: #1d4ed8;
+    --pico-color-blue-800: #1e40af;
+    --pico-color-blue-900: #1e3a8a;
+
+    --pico-color-cyan-50: #ecfeff;
+    --pico-color-cyan-100: #cffafe;
+    --pico-color-cyan-200: #a5f3fc;
+    --pico-color-cyan-300: #67e8f9;
+    --pico-color-cyan-400: #22d3ee;
+    --pico-color-cyan-500: #06b6d4;
+    --pico-color-cyan-600: #0891b2;
+    --pico-color-cyan-700: #0e7490;
+    --pico-color-cyan-800: #155e75;
+    --pico-color-cyan-900: #164e63;
+
+    --pico-color-teal-50: #f0fdfa;
+    --pico-color-teal-100: #ccfbf1;
+    --pico-color-teal-200: #99f6e4;
+    --pico-color-teal-300: #5eead4;
+    --pico-color-teal-400: #2dd4bf;
+    --pico-color-teal-500: #14b8a6;
+    --pico-color-teal-600: #0d9488;
+    --pico-color-teal-700: #0f766e;
+    --pico-color-teal-800: #115e59;
+    --pico-color-teal-900: #134e4a;
+
+    --pico-color-green-50: #f0fdf4;
+    --pico-color-green-100: #dcfce7;
+    --pico-color-green-200: #bbf7d0;
+    --pico-color-green-300: #86efac;
+    --pico-color-green-400: #4ade80;
+    --pico-color-green-500: #22c55e;
+    --pico-color-green-600: #16a34a;
+    --pico-color-green-700: #15803d;
+    --pico-color-green-800: #166534;
+    --pico-color-green-900: #14532d;
+
+    --pico-color-lime-50: #f7fee7;
+    --pico-color-lime-100: #ecfccb;
+    --pico-color-lime-200: #d9f99d;
+    --pico-color-lime-300: #bef264;
+    --pico-color-lime-400: #a3e635;
+    --pico-color-lime-500: #84cc16;
+    --pico-color-lime-600: #65a30d;
+    --pico-color-lime-700: #4d7c0f;
+    --pico-color-lime-800: #3f6212;
+    --pico-color-lime-900: #365314;
+
+    --pico-color-yellow-50: #fffbeb;
+    --pico-color-yellow-100: #fef3c7;
+    --pico-color-yellow-200: #fde68a;
+    --pico-color-yellow-300: #fcd34d;
+    --pico-color-yellow-400: #fbbf24;
+    --pico-color-yellow-500: #f59e0b;
+    --pico-color-yellow-600: #d97706;
+    --pico-color-yellow-700: #b45309;
+    --pico-color-yellow-800: #92400e;
+    --pico-color-yellow-900: #78350f;
+
+    --pico-color-amber-50: #fffbeb;
+    --pico-color-amber-100: #fef3c7;
+    --pico-color-amber-200: #fde68a;
+    --pico-color-amber-300: #fcd34d;
+    --pico-color-amber-400: #fbbf24;
+    --pico-color-amber-500: #f59e0b;
+    --pico-color-amber-600: #d97706;
+    --pico-color-amber-700: #b45309;
+    --pico-color-amber-800: #92400e;
+    --pico-color-amber-900: #78350f;
+
+    --pico-color-orange-50: #fff7ed;
+    --pico-color-orange-100: #ffedd5;
+    --pico-color-orange-200: #fed7aa;
+    --pico-color-orange-300: #fdba74;
+    --pico-color-orange-400: #fb923c;
+    --pico-color-orange-500: #f97316;
+    --pico-color-orange-600: #ea580c;
+    --pico-color-orange-700: #c2410c;
+    --pico-color-orange-800: #9a3412;
+    --pico-color-orange-900: #7c2d12;
+
+    --pico-color-brown-50: #fdf4f0;
+    --pico-color-brown-100: #fce7dc;
+    --pico-color-brown-200: #f5d0bf;
+    --pico-color-brown-300: #ebb794;
+    --pico-color-brown-400: #d89b7a;
+    --pico-color-brown-500: #b8754e;
+    --pico-color-brown-600: #9b6439;
+    --pico-color-brown-700: #7d4f2f;
+    --pico-color-brown-800: #653d25;
+    --pico-color-brown-900: #522f1f;
+
+    --pico-color-gray-50: #f9fafb;
+    --pico-color-gray-100: #f3f4f6;
+    --pico-color-gray-200: #e5e7eb;
+    --pico-color-gray-300: #d1d5db;
+    --pico-color-gray-400: #9ca3af;
+    --pico-color-gray-500: #6b7280;
+    --pico-color-gray-600: #4b5563;
+    --pico-color-gray-700: #374151;
+    --pico-color-gray-800: #1f2937;
+    --pico-color-gray-900: #111827;
+
+    --pico-color-slate-50: #f8fafc;
+    --pico-color-slate-100: #f1f5f9;
+    --pico-color-slate-200: #e2e8f0;
+    --pico-color-slate-300: #cbd5e1;
+    --pico-color-slate-400: #94a3b8;
+    --pico-color-slate-500: #64748b;
+    --pico-color-slate-600: #475569;
+    --pico-color-slate-700: #334155;
+    --pico-color-slate-800: #1e293b;
+    --pico-color-slate-900: #0f172a;
+
+    --pico-color-zinc-50: #fafafa;
+    --pico-color-zinc-100: #f4f4f5;
+    --pico-color-zinc-200: #e4e4e7;
+    --pico-color-zinc-300: #d4d4d8;
+    --pico-color-zinc-400: #a1a1aa;
+    --pico-color-zinc-500: #71717a;
+    --pico-color-zinc-600: #52525b;
+    --pico-color-zinc-700: #3f3f46;
+    --pico-color-zinc-800: #27272a;
+    --pico-color-zinc-900: #18181b;
+}
+
+/* Dark theme adjustments */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Dark theme colors - slightly brighter for better contrast */
+        --pico-color-red-50: #7f1d1d;
+        --pico-color-red-100: #991b1b;
+        --pico-color-red-200: #b91c1c;
+        --pico-color-red-300: #dc2626;
+        --pico-color-red-400: #ef4444;
+        --pico-color-red-500: #f87171;
+        --pico-color-red-600: #fca5a5;
+        --pico-color-red-700: #fecaca;
+        --pico-color-red-800: #fee2e2;
+        --pico-color-red-900: #fef2f2;
+
+        /* Similar adjustments for other colors... (abbreviated for brevity) */
+        --pico-color-blue-500: #60a5fa;
+        --pico-color-green-500: #4ade80;
+        --pico-color-gray-500: #9ca3af;
+        --pico-color-slate-500: #94a3b8;
+        --pico-color-zinc-500: #a1a1aa;
+    }
+}
+
+/* Ensure component list titles and descriptions use a standard sans-serif (avoid icon font leak) */
+.control-componentlist div.components div.layout-cell > div,
+.control-componentlist div.components div.layout-cell > div span.name,
+.control-componentlist div.components div.layout-cell > div span.description,
+.control-filelist.component-list ul li div.group h4,
+.control-filelist.component-list ul li div.group h4 a {
+    font-family:
+        system-ui,
+        -apple-system,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        sans-serif !important;
+    font-weight: 400 !important;
+}
+
+/* Ensure pseudo-element icons use Font Awesome (correct glyph & weight) */
+.control-componentlist div.components div.layout-cell > div::before,
+.control-componentlist div.components div.layout-cell > div::after,
+.component-list .components div.layout-cell > div::before,
+.component-list .components div.layout-cell > div::after {
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important; /* solid icons */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Also ensure component alias and other text parts use normal font */
+div.control-componentlist div.components div.layout-cell > div span.alias,
+div.control-componentlist
+    div.components
+    div.layout-cell
+    > div
+    span.description {
+    font-family:
+        system-ui,
+        -apple-system,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        sans-serif !important;
+}

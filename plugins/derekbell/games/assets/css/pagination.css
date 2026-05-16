@@ -1,0 +1,53 @@
+/* PicoCSS-like pagination styles for FrontPageLevels */
+.pagination {
+    display: flex;
+    /* Explicitly remove list markers for wide browser support */
+    list-style: none;
+    list-style-type: none;
+    list-style-image: none;
+    padding: 0;
+    margin: 1rem 0;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.pagination li {
+    list-style: none;
+}
+
+.pagination li::marker {
+    /* Ensure any marker is blank */
+    content: "";
+}
+
+.pagination li a {
+    display: inline-block;
+    padding: 0.45rem 0.75rem;
+    background: transparent;
+    border: 1px solid var(--pico-border-color, rgba(0, 0, 0, 0.08));
+    color: inherit;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    transition:
+        background 0.15s ease,
+        color 0.15s ease;
+}
+
+.pagination li a:hover {
+    background: var(--pico-primary-hover-background, rgba(0, 0, 0, 0.04));
+}
+
+.pagination li.active a,
+.pagination li.active {
+    background: var(--pico-primary, #1f6feb); /* Pico primary */
+    color: var(--pico-primary-contrast, #ffffff);
+    border-color: var(--primary, #1f6feb);
+}
+
+.pagination li.disabled,
+.pagination li.disabled a {
+    opacity: 0.5;
+    pointer-events: none;
+}

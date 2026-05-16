@@ -1,0 +1,26 @@
+.footer {
+    border-top: 1px solid var(--pico-muted-border-color);
+    margin-top: var(--pico-spacing);
+    padding-top: var(--pico-spacing);
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.social-links {
+    display: flex;
+    gap: 0.5rem;
+
+    a {
+        color: var(--pico-muted-color);
+        text-decoration: none;
+        font-size: 0.9rem;
+
+        &:hover {
+            color: var(--pico-primary);
+            text-decoration: underline;
+        }
+    }
+}

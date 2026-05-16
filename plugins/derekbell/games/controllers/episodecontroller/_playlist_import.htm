@@ -1,0 +1,65 @@
+<div class="form-group">
+    <label>Import from YouTube Playlist</label>
+    <div class="input-group">
+        <input
+            type="text"
+            id="playlist_url"
+            class="form-control"
+            placeholder="Enter YouTube playlist URL or ID"
+            value=""
+        />
+        <span class="input-group-btn">
+            <button
+                type="button"
+                class="btn btn-primary"
+                data-request="onImportPlaylist"
+                data-request-data="episode_id: <?= $formModel->id ?>"
+                data-request-update="{ _playlist_preview: '#playlist-preview' }"
+                data-stripe-load-indicator
+            >
+                <i class="icon-download"></i> Preview Playlist
+            </button>
+        </span>
+    </div>
+    <p class="help-block">
+        Enter a YouTube playlist URL (e.g., https://www.youtube.com/playlist?list=PLxxx)
+        or just the playlist ID to preview and import videos as levels.
+    </p>
+</div>
+
+<div id="playlist-preview" class="playlist-preview-container">
+    <!-- Preview content will be loaded here -->
+</div>
+
+<style>
+.playlist-preview-container {
+    margin-top: 20px;
+}
+.playlist-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+.playlist-item-thumbnail {
+    width: 120px;
+    height: 90px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+.playlist-item-details {
+    flex: 1;
+}
+.playlist-item-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.playlist-item-description {
+    font-size: 12px;
+    color: #666;
+    max-height: 60px;
+    overflow: hidden;
+}
+</style>

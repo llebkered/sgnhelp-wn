@@ -1,0 +1,32 @@
+plugin:
+    name: 'derekbell.games::lang.plugin.name'
+    description: 'derekbell.games::lang.plugin.description'
+    author: 'Derek Bell'
+    icon: 'fas icon-gamepad'
+    replaces: {  }
+navigation:
+    main-menu-item:
+        label: Games
+        url: derekbell/games/gamecontroller
+        icon: icon-gamepad
+        sideMenu:
+            side-menu-item3:
+                label: 'derekbell.games::lang.plugin.name'
+                url: derekbell/games/gamecontroller
+                icon: icon-gamepad
+            side-menu-item:
+                label: Episodes
+                url: derekbell/games/episodecontroller
+                icon: icon-columns
+            side-menu-item2:
+                label: Levels
+                url: derekbell/games/levelcontroller
+                icon: icon-sitemap
+            scaffold:
+                label: Scaffold New Episode
+                url: derekbell/games/scaffold
+                icon: icon-magic
+            scaffold-playlist:
+                label: Scaffold from YouTube Playlist
+                url: derekbell/games/scaffold/import
+                icon: icon-youtube-play

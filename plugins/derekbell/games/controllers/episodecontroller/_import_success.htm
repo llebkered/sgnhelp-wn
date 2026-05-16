@@ -1,0 +1,13 @@
+<div class="callout callout-success">
+    <div class="header">
+        <i class="icon-check"></i>
+        <h3>Import Completed</h3>
+    </div>
+    <div class="content">
+        <p>Successfully imported <?= $importedCount ?> level<?= $importedCount !== 1 ? 's' : '' ?>.</p>
+        <?php if ($skippedCount > 0): ?>
+            <p><?= $skippedCount ?> duplicate<?= $skippedCount !== 1 ? 's were' : ' was' ?> skipped.</p>
+        <?php endif; ?>
+        <p>Levels have been created as unpublished. Review and publish them when ready.</p>
+    </div>
+</div>

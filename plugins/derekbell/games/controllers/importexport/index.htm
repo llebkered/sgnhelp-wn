@@ -1,0 +1,56 @@
+title = "Import/Export Games"
+url = "/backend/derekbell/games/importexport"
+layout = "backend"
+==
+<div class="layout">
+    <h1>Import/Export Games</h1>
+    <form method="POST" data-request="onExport">
+        <button type="submit" class="btn btn-primary">Export</button>
+    </form>
+    <?= $this->makePartial('upload_box') ?>
+    <form method="POST" data-request="onImport" style="margin-top:20px;">
+        <input type="hidden" name="uploaded_import_file" id="uploaded_import_file" value="<?= isset($uploadedImportFile) ? e($uploadedImportFile) : '' ?>">
+        <button type="submit" class="btn btn-danger" <?= empty($uploadedImportFile) ? 'disabled' : '' ?>>Import</button>
+    </form>
+    <p>Exported file: <code>storage/app/games-export.zip</code></p>
+    <p>To import, upload a <code>games-export.zip</code> file and click Import.</p>
+
+    <div class="alert alert-info" style="margin-top:20px;">
+        <strong>Import File Format:</strong><br>
+        The import file must be a <b>ZIP archive</b> containing a single <code>games.json</code> file.<br>
+        <br>
+        <b>games.json</b> should be a JSON array of game objects. Each object should include the required fields for a game.<br>
+        <br>
+        <b>Sample <code>games.json</code>:</b>
+        <pre style="background:#f8f8f8; border:1px solid #ccc; padding:10px;">
+[
+    {
+        "title": "Sample Game",
+        "slug": "sample-game",
+        "excerpt": "Short summary.",
+        "description": "A sample game for import.",
+        "is_published": true,
+        "is_promoted": false,
+        "sort_order": 1,
+        "color_theme": "blue"
+    },
+    {
+        "title": "Another Game",
+        "slug": "another-game",
+        "excerpt": "Another summary.",
+        "description": "Another example.",
+        "is_published": false,
+        "is_promoted": true,
+        "sort_order": 2,
+        "color_theme": "red"
+    }
+]
+        </pre>
+        <ul>
+            <li><b>File type:</b> ZIP archive (.zip)</li>
+            <li><b>Required file inside ZIP:</b> <code>games.json</code></li>
+            <li><b>Format:</b> JSON array of objects, one per game</li>
+            <li><b>Required fields:</b> <code>title</code>, <code>slug</code>, <code>excerpt</code>, <code>description</code>, <code>is_published</code>, <code>is_promoted</code>, <code>sort_order</code>, <code>color_theme</code></li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<?php
+    $thumbUrl = null;
+
+    if ($formModel->youtube_thumbnail) {
+        $thumbUrl = $formModel->youtube_thumbnail->getThumb(320, 180, ['mode' => 'crop']);
+    } elseif (!empty($formModel->youtube_id)) {
+        $thumbUrl = "https://img.youtube.com/vi/{$formModel->youtube_id}/hqdefault.jpg";
+    }
+?>
+
+<?php if ($thumbUrl): ?>
+    <div style="margin-top:6px;">
+        <img src="<?= e($thumbUrl) ?>" alt="YouTube Thumbnail" style="width:320px;height:180px;object-fit:cover;border-radius:6px;">
+    </div>
+<?php else: ?>
+    <p class="help-block">No thumbnail available.</p>
+<?php endif; ?>

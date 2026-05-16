@@ -1,0 +1,44 @@
+fields:
+    title:
+        label: Title
+        span: auto
+        type: text
+    episode:
+        label: Episode
+        nameFrom: title
+        span: auto
+        type: relation
+    slug:
+        label: Slug
+        span: auto
+        type: text
+    level_number:
+        label: 'Level number'
+        span: auto
+        type: number
+    youtube_id:
+        label: 'Youtube id'
+        span: auto
+        type: text
+    youtube_thumbnail_preview:
+        label: 'YouTube Thumbnail'
+        span: auto
+        type: partial
+        path: $/derekbell/games/models/levels/_youtube_thumbnail_preview.htm
+        context: [update]
+    excerpt:
+        label: Excerpt
+        span: auto
+        type: textarea
+    description:
+        label: Description
+        span: auto
+        type: textarea
+    is_published:
+        label: 'Is published'
+        span: auto
+        type: checkbox
+    is_promoted:
+        label: 'Is promoted'
+        span: auto
+        type: checkbox

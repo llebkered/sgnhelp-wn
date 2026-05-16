@@ -1,0 +1,15 @@
+levels:
+    label: Levels
+    view:
+        list: $/derekbell/games/models/levels/columns.yaml
+        toolbarButtons: create|delete
+        toolbarPartial: $/derekbell/games/controllers/episodecontroller/_relation_toolbar.htm
+        recordsPerPage: 20
+        showSorting: true
+        recordUrl: derekbell/games/levelcontroller/update/:id
+        defaultSort:
+            column: sort_order
+            direction: asc
+    manage:
+        form: $/derekbell/games/models/levels/fields.yaml
+        list: $/derekbell/games/models/levels/columns.yaml

@@ -1,0 +1,53 @@
+.level {
+    border: 1px solid var(--pico-card-border-color);
+    border-radius: var(--pico-border-radius);
+    background-color: var(--pico-card-background-color);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
+
+    header,
+    footer {
+        padding: var(--pico-spacing);
+    }
+
+    header {
+        padding-bottom: 0;
+
+        h3 {
+            margin: 0;
+            font-size: 1rem;
+
+            a {
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    footer {
+        flex: 1;
+        font-size: 0.85rem;
+        color: var(--pico-muted-color);
+
+        p {
+            margin: 0;
+        }
+    }
+}

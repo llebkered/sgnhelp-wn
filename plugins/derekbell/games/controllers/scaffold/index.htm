@@ -1,0 +1,106 @@
+<?= Form::open(['class' => 'layout stretch']) ?>
+
+    <div class="layout-row">
+        <div class="padded-container">
+
+            <div class="form-preview">
+                <div class="form-group">
+                    <h3>Create Episode with Levels</h3>
+                    <p class="help-block">
+                        Quickly scaffold a new episode with a specified number of empty levels.
+                        The episode and levels will be created as unpublished for review.
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label for="game_id">Game *</label>
+                    <select
+                        name="game_id"
+                        id="game_id"
+                        class="form-control custom-select"
+                        required
+                    >
+                        <option value="">-- Select a Game --</option>
+                        <?php foreach ($games as $game): ?>
+                            <option value="<?= $game->id ?>"><?= e($game->title) ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <p class="help-block">Select the game this episode belongs to</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="episode_title">Episode Title *</label>
+                    <input
+                        type="text"
+                        name="episode_title"
+                        id="episode_title"
+                        class="form-control"
+                        placeholder="e.g., Episode 1, Candy Crush Saga Episode 10"
+                        required
+                    />
+                    <p class="help-block">Enter a title for the new episode</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="number_of_levels">Number of Levels *</label>
+                    <input
+                        type="number"
+                        name="number_of_levels"
+                        id="number_of_levels"
+                        class="form-control"
+                        min="1"
+                        max="<?= $maxBulkLevels ?>"
+                        value="10"
+                        required
+                    />
+                    <p class="help-block">How many empty levels to create (1–<?= $maxBulkLevels ?>)</p>
+                </div>
+
+                <div class="form-group">
+                    <div class="callout callout-info">
+                        <div class="header">
+                            <i class="icon-info-circle"></i>
+                            <h3>What will be created?</h3>
+                        </div>
+                        <div class="content">
+                            <ul>
+                                <li>One new episode (unpublished)</li>
+                                <li>X number of empty levels (unpublished)</li>
+                                <li>Levels will be numbered sequentially (Level 1, Level 2, etc.)</li>
+                                <li>Episode number will be auto-incremented</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-buttons">
+                    <button
+                        type="button"
+                        class="btn btn-primary btn-lg"
+                        data-request="onScaffoldEpisode"
+                        data-request-success="
+                            $.wn.flashMsg({
+                                text: data.message,
+                                class: 'success',
+                                interval: 5
+                            });
+                            if (data.redirect) {
+                                window.location = data.redirect;
+                                return;
+                            }
+                            $('#game_id').val('');
+                            $('#episode_title').val('');
+                            $('#number_of_levels').val('10');
+                        "
+                        data-stripe-load-indicator
+                    >
+                        <i class="icon-magic"></i> Create Episode &amp; Levels
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+<?= Form::close() ?>

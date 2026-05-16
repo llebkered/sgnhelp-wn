@@ -1,0 +1,46 @@
+columns:
+    id:
+        label: id
+        type: number
+    game_id:
+        label: game
+        type: text
+        relation: game
+        select: title
+    title:
+        label: title
+        type: text
+    slug:
+        label: slug
+        type: text
+    start_level:
+        label: start_level
+        type: number
+    end_level:
+        label: end_level
+        type: number
+    episode_number:
+        label: episode_number
+        type: number
+    excerpt:
+        label: excerpt
+        type: text
+    description:
+        label: description
+        type: text
+    is_published:
+        label: Published
+        type: partial
+        path: $/derekbell/games/models/episodes/_is_published_switch.htm
+        clickable: false
+    is_promoted:
+        label: Promoted
+        type: partial
+        path: $/derekbell/games/models/episodes/_is_promoted_switch.htm
+        clickable: false
+    created_at:
+        label: created_at
+        type: datetime
+    updated_at:
+        label: updated_at
+        type: datetime

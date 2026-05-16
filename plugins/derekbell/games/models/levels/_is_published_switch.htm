@@ -1,0 +1,12 @@
+<?php
+    $checked = $listValue ? 'checked="checked"' : '';
+?>
+<label class="custom-switch" onclick="event.stopPropagation();">
+    <input
+        type="checkbox"
+        <?= $checked ?>
+        onclick="event.stopPropagation(); $(this).request('onToggleLevelPublish', { data: { id: <?= $listRecord->id ?>, is_published: this.checked ? 1 : 0 } });"
+    >
+    <span><span><?= e(trans('backend::lang.list.column_switch_true')) ?></span><span><?= e(trans('backend::lang.list.column_switch_false')) ?></span></span>
+    <a class="slide-button"></a>
+</label>

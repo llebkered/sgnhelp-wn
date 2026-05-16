@@ -1,0 +1,63 @@
+services:
+    app:
+        build:
+            args:
+                user: sgnhelp
+                uid: 1000
+            context: ./docker/php
+            dockerfile: Dockerfile
+        image: sgnhelp
+        container_name: sgnhelp-app
+        restart: unless-stopped
+        working_dir: /var/www/html
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./:/var/www/html
+        networks:
+            - sgnhelp
+
+    db:
+        # Use multi-arch image for Apple Silicon (M1)
+        image: mysql:8
+        container_name: sgnhelp-db
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_USER: ${DB_USERNAME}
+        # Use .env for secrets and credentials
+        volumes:
+            - db:/var/lib/mysql
+            # - ./docker/mysql:/docker-entrypoint-initdb.d
+        networks:
+            - sgnhelp
+
+    phpmyadmin:
+        # Use latest multi-arch image for Apple Silicon (M1)
+        image: phpmyadmin:latest
+        container_name: phpmyadmin
+        # platform override removed for M1 compatibility
+        environment:
+            PMA_HOST: db
+            PMA_PORT: 3306
+            PMA_ARBITRARY: 1
+            UPLOAD_LIMIT: 10M
+        restart: always
+        ports:
+            - 8081:80
+        networks:
+            - sgnhelp
+        # No need to mount db volume for phpmyadmin
+
+networks:
+    sgnhelp:
+        driver: bridge
+
+volumes:
+    db:
+        driver: local
+    app:
+        driver: local

@@ -1,0 +1,29 @@
+/* Cyan theme - Light */
+:root[data-theme="cyan"],
+[data-theme="cyan"] {
+    --pico-primary: #06b6d4;
+    --pico-primary-hover: #0891b2;
+    --pico-primary-focus: rgba(6, 182, 212, 0.25);
+    --pico-primary-inverse: #fff;
+    --pico-background-color: #ecfeff;
+    --pico-color: #1c1917;
+    --pico-card-background-color: #ffffff;
+    --pico-card-border-color: #67e8f9;
+    --pico-secondary: #22d3ee;
+    --pico-secondary-hover: #06b6d4;
+}
+
+/* Cyan theme - Dark */
+:root[data-theme="cyan-dark"],
+[data-theme="cyan-dark"] {
+    --pico-primary: #22d3ee;
+    --pico-primary-hover: #67e8f9;
+    --pico-primary-focus: rgba(34, 211, 238, 0.25);
+    --pico-primary-inverse: #1c1917;
+    --pico-background-color: #0a1618;
+    --pico-color: #ecfeff;
+    --pico-card-background-color: #102228;
+    --pico-card-border-color: #155e75;
+    --pico-secondary: #0891b2;
+    --pico-secondary-hover: #06b6d4;
+}

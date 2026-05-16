@@ -1,0 +1,23 @@
+<!-- Scripts -->
+<script defer src="{{ [
+            '@jquery',
+            '@framework',
+            '@framework.extras',
+
+            'assets/js/app.js',
+        ] | theme }}"></script>
+{% scripts %} {% flash %}
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('{{ 'assets/sw.js' | theme }}', { scope: '/' })
+        .catch(err => console.warn('SW registration failed:', err));
+}
+</script>
+<p
+    data-control="flash-message"
+    data-interval="7"
+    class="flashmessage {{ type }}"
+>
+    {{ message }}
+</p>
+{% endflash %}

@@ -1,0 +1,29 @@
+/* Red theme - Light */
+:root[data-theme="red"],
+[data-theme="red"] {
+    --pico-primary: #ef4444;
+    --pico-primary-hover: #dc2626;
+    --pico-primary-focus: rgba(239, 68, 68, 0.25);
+    --pico-primary-inverse: #fff;
+    --pico-background-color: #fef2f2;
+    --pico-color: #1c1917;
+    --pico-card-background-color: #ffffff;
+    --pico-card-border-color: #fecaca;
+    --pico-secondary: #f87171;
+    --pico-secondary-hover: #ef4444;
+}
+
+/* Red theme - Dark */
+:root[data-theme="red-dark"],
+[data-theme="red-dark"] {
+    --pico-primary: #f87171;
+    --pico-primary-hover: #fca5a5;
+    --pico-primary-focus: rgba(248, 113, 113, 0.25);
+    --pico-primary-inverse: #1c1917;
+    --pico-background-color: #1a0a0a;
+    --pico-color: #fef2f2;
+    --pico-card-background-color: #2a1010;
+    --pico-card-border-color: #7f1d1d;
+    --pico-secondary: #dc2626;
+    --pico-secondary-hover: #ef4444;
+}

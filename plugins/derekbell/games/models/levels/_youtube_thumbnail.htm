@@ -1,0 +1,13 @@
+<?php
+    $thumbUrl = null;
+
+    if ($listRecord->youtube_thumbnail) {
+        $thumbUrl = $listRecord->youtube_thumbnail->getThumb(120, 68, ['mode' => 'crop']);
+    } elseif (!empty($listRecord->youtube_id)) {
+        $thumbUrl = "https://img.youtube.com/vi/{$listRecord->youtube_id}/default.jpg";
+    }
+?>
+
+<?php if ($thumbUrl): ?>
+    <img src="<?= e($thumbUrl) ?>" alt="Thumbnail" style="width:120px;height:68px;object-fit:cover;border-radius:4px;">
+<?php endif; ?>

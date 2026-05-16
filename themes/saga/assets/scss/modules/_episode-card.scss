@@ -1,0 +1,44 @@
+.episode-card {
+    position: relative;
+    border: 1px solid var(--pico-card-border-color);
+    border-radius: var(--pico-border-radius);
+    padding: var(--pico-spacing);
+    background-color: var(--pico-card-background-color);
+
+    &.card--promoted {
+        background-color: var(--pico-card-sectioning-background-color);
+        border-color: var(--pico-primary);
+    }
+
+    h3 {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+.promoted-icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    flex-shrink: 0;
+    vertical-align: middle;
+    color: var(--pico-primary);
+}
+
+.episode-excerpt {
+    margin-bottom: 0.5rem;
+    color: var(--pico-muted-color);
+}
+
+.episode-meta {
+    display: flex;
+    gap: var(--pico-spacing);
+    font-size: 0.85rem;
+    color: var(--pico-muted-color);
+}
+
+.episode-number,
+.episode-levels {
+    display: inline-block;
+}

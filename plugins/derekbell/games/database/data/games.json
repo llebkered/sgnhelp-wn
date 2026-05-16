@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Cookie Jam",
+    "url": "https://sgnhelp.com/cookie-jam",
+    "id": 1
+  },
+  {
+    "name": "Cookie Jam Blast",
+    "url": "https://sgnhelp.com/cookie-jam-blast",
+    "id": 2
+  },
+  {
+    "name": "Family Guy",
+    "url": "https://sgnhelp.com/family-guy",
+    "id": 3
+  },
+  {
+    "name": "Genies & Gems",
+    "url": "https://sgnhelp.com/genies-and-gems",
+    "id": 4
+  },
+  {
+    "name": "Juice Jam",
+    "url": "https://sgnhelp.com/juice-jam",
+    "id": 5
+  },
+  {
+    "name": "Naughty Monster Story",
+    "url": "https://sgnhelp.com/naughty-monster-story",
+    "id": 6
+  },
+  {
+    "name": "Paint Monsters",
+    "url": "https://sgnhelp.com/paint-monsters",
+    "id": 7
+  },
+  {
+    "name": "Panda Pop",
+    "url": "https://sgnhelp.com/panda-pop",
+    "id": 8
+  },
+  {
+    "name": "Snoopy Pop",
+    "url": "https://sgnhelp.com/snoopy-pop",
+    "id": 9
+  },
+  {
+    "name": "Sugar Smash",
+    "url": "https://sgnhelp.com/sugar-smash",
+    "id": 10
+  }
+]

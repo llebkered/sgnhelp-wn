@@ -1,0 +1,11 @@
+name: GameController
+modelClass: DerekBell\Games\Models\Game
+form: $/derekbell/games/models/games/fields.yaml
+defaultRedirect: derekbell/games/gamecontroller
+create:
+    redirect: 'derekbell/games/gamecontroller/update/:id'
+    redirectClose: derekbell/games/gamecontroller
+update:
+    redirect: derekbell/games/gamecontroller
+    redirectClose: derekbell/games/gamecontroller
+preview: {  }

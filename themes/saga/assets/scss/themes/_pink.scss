@@ -1,0 +1,29 @@
+/* Pink theme - Light */
+:root[data-theme="pink"],
+[data-theme="pink"] {
+    --pico-primary: #ec4899;
+    --pico-primary-hover: #db2777;
+    --pico-primary-focus: rgba(236, 72, 153, 0.25);
+    --pico-primary-inverse: #fff;
+    --pico-background-color: #fdf2f8;
+    --pico-color: #1c1917;
+    --pico-card-background-color: #ffffff;
+    --pico-card-border-color: #fbcfe8;
+    --pico-secondary: #f472b6;
+    --pico-secondary-hover: #ec4899;
+}
+
+/* Pink theme - Dark */
+:root[data-theme="pink-dark"],
+[data-theme="pink-dark"] {
+    --pico-primary: #f472b6;
+    --pico-primary-hover: #f9a8d4;
+    --pico-primary-focus: rgba(244, 114, 182, 0.25);
+    --pico-primary-inverse: #1c1917;
+    --pico-background-color: #1a0a12;
+    --pico-color: #fdf2f8;
+    --pico-card-background-color: #2a1020;
+    --pico-card-border-color: #831843;
+    --pico-secondary: #db2777;
+    --pico-secondary-hover: #ec4899;
+}

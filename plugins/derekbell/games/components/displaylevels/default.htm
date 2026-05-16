@@ -1,0 +1,32 @@
+<div class="grid-320">
+    {% for level in levels %}
+        {% set levelUrl = 'game/' ~ game.slug ~ '/' ~ episode.slug ~ '/' ~ level.slug %}
+        <article class="level">
+            <header>
+                <h3><a href="{{ levelUrl | app }}">{{ level.title }}</a></h3>
+            </header>
+            {% if level.youtube_thumbnail %}
+            <a href="{{ levelUrl | app }}">
+                <img
+                    src="{{ level.youtube_thumbnail.getPath() }}"
+                    alt="{{ level.title }} thumbnail"
+                    loading="lazy"
+                    width="480"
+                    height="270"
+                >
+            </a>
+            {% else %}
+                <img
+                    src="{{ 'plugins/derekbell/games/assets/images/default-level.webp' | app }}"
+                    alt="Default thumbnail"
+                    loading="lazy"
+                    width="480"
+                    height="270"
+                >
+            {% endif %}
+            {% if level.description %}
+            <footer><p>{{ level.description }}</p></footer>
+            {% endif %}
+        </article>
+    {% endfor %}
+</div>

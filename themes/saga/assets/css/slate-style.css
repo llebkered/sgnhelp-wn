@@ -1,0 +1,29 @@
+/* Slate theme - Light */
+:root[data-theme="slate"],
+[data-theme="slate"] {
+    --pico-primary: #64748b;
+    --pico-primary-hover: #475569;
+    --pico-primary-focus: rgba(100, 116, 139, 0.25);
+    --pico-primary-inverse: #fff;
+    --pico-background-color: #f8fafc;
+    --pico-color: #1c1917;
+    --pico-card-background-color: #ffffff;
+    --pico-card-border-color: #cbd5e1;
+    --pico-secondary: #94a3b8;
+    --pico-secondary-hover: #64748b;
+}
+
+/* Slate theme - Dark */
+:root[data-theme="slate-dark"],
+[data-theme="slate-dark"] {
+    --pico-primary: #94a3b8;
+    --pico-primary-hover: #cbd5e1;
+    --pico-primary-focus: rgba(148, 163, 184, 0.25);
+    --pico-primary-inverse: #1c1917;
+    --pico-background-color: #0f1219;
+    --pico-color: #f8fafc;
+    --pico-card-background-color: #1e2130;
+    --pico-card-border-color: #334155;
+    --pico-secondary: #475569;
+    --pico-secondary-hover: #64748b;
+}

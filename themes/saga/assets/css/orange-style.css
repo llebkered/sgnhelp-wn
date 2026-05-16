@@ -1,0 +1,29 @@
+/* Orange theme - Light */
+:root[data-theme="orange"],
+[data-theme="orange"] {
+    --pico-primary: #fb923c;
+    --pico-primary-hover: #ea580c;
+    --pico-primary-focus: rgba(251, 146, 60, 0.25);
+    --pico-primary-inverse: #fff;
+    --pico-background-color: #fff7ed;
+    --pico-color: #1c1917;
+    --pico-card-background-color: #ffffff;
+    --pico-card-border-color: #fed7aa;
+    --pico-secondary: #fdba74;
+    --pico-secondary-hover: #fb923c;
+}
+
+/* Orange theme - Dark */
+:root[data-theme="orange-dark"],
+[data-theme="orange-dark"] {
+    --pico-primary: #fdba74;
+    --pico-primary-hover: #fed7aa;
+    --pico-primary-focus: rgba(253, 186, 116, 0.25);
+    --pico-primary-inverse: #1c1917;
+    --pico-background-color: #16100a;
+    --pico-color: #fff7ed;
+    --pico-card-background-color: #221c10;
+    --pico-card-border-color: #7c2d12;
+    --pico-secondary: #ea580c;
+    --pico-secondary-hover: #fb923c;
+}

@@ -1,0 +1,46 @@
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    li {
+        list-style: none;
+
+        &::marker {
+            content: "";
+        }
+
+        a {
+            display: inline-block;
+            padding: 0.45rem 0.75rem;
+            background: transparent;
+            border: 1px solid var(--pico-border-color, rgba(0, 0, 0, 0.08));
+            color: inherit;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            transition: background 0.15s ease, color 0.15s ease;
+
+            &:hover {
+                background: var(--pico-primary-hover-background, rgba(0, 0, 0, 0.04));
+            }
+        }
+
+        &.active a,
+        &.active {
+            background: var(--pico-primary, #1f6feb);
+            color: var(--pico-primary-inverse, #ffffff);
+            border-color: var(--pico-primary, #1f6feb);
+        }
+
+        &.disabled,
+        &.disabled a {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+    }
+}

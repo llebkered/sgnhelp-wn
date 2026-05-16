@@ -1,0 +1,29 @@
+/* Amber theme - Light */
+:root[data-theme="amber"],
+[data-theme="amber"] {
+    --pico-primary: #f59e0b;
+    --pico-primary-hover: #d97706;
+    --pico-primary-focus: rgba(245, 158, 11, 0.25);
+    --pico-primary-inverse: #fff;
+    --pico-background-color: #fffbeb;
+    --pico-color: #1c1917;
+    --pico-card-background-color: #ffffff;
+    --pico-card-border-color: #fcd34d;
+    --pico-secondary: #fbbf24;
+    --pico-secondary-hover: #f59e0b;
+}
+
+/* Amber theme - Dark */
+:root[data-theme="amber-dark"],
+[data-theme="amber-dark"] {
+    --pico-primary: #fbbf24;
+    --pico-primary-hover: #fcd34d;
+    --pico-primary-focus: rgba(251, 191, 36, 0.25);
+    --pico-primary-inverse: #1c1917;
+    --pico-background-color: #16120a;
+    --pico-color: #fffbeb;
+    --pico-card-background-color: #221e10;
+    --pico-card-border-color: #78350f;
+    --pico-secondary: #d97706;
+    --pico-secondary-hover: #f59e0b;
+}

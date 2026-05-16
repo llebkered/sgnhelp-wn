@@ -1,0 +1,6 @@
+name: Saga
+description: 'Theme for Saga Level Help — a game walkthrough and level guide site'
+author: 'derek bell'
+homepage: 'https://sagalevel.com.au/'
+code: winter-cms
+form: theme_fields.yaml

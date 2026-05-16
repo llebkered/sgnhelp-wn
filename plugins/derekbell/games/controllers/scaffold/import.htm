@@ -1,0 +1,103 @@
+<?= Form::open(['class' => 'layout stretch']) ?>
+
+    <div class="layout-row">
+        <div class="padded-container">
+
+            <div class="form-preview">
+                <div class="form-group">
+                    <h3>Create Episode from YouTube Playlist</h3>
+                    <p class="help-block">
+                        Select a game and paste a YouTube playlist URL or ID.
+                        The episode title will be set from the playlist title and levels will be created as unpublished.
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label for="game_id">Game *</label>
+                    <select
+                        name="game_id"
+                        id="game_id"
+                        class="form-control custom-select"
+                        required
+                    >
+                        <option value="">-- Select a Game --</option>
+                        <?php foreach ($games as $game): ?>
+                            <option value="<?= $game->id ?>"><?= e($game->title) ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <p class="help-block">Select the game this episode belongs to</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="playlist_url">YouTube Playlist URL or ID *</label>
+                    <input
+                        type="text"
+                        name="playlist_url"
+                        id="playlist_url"
+                        class="form-control"
+                        placeholder="https://www.youtube.com/playlist?list=PLxxx"
+                        required
+                    />
+                    <p class="help-block">The playlist title will be used for the new episode name</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="episode_title">Episode Title (optional)</label>
+                    <input
+                        type="text"
+                        name="episode_title"
+                        id="episode_title"
+                        class="form-control"
+                        placeholder="Leave blank to use the playlist title"
+                    />
+                    <p class="help-block">Overrides the playlist title if provided</p>
+                </div>
+
+                <div class="form-group">
+                    <div class="callout callout-info">
+                        <div class="header">
+                            <i class="icon-info-circle"></i>
+                            <h3>What will be created?</h3>
+                        </div>
+                        <div class="content">
+                            <ul>
+                                <li>One new episode (unpublished) using the playlist title</li>
+                                <li>A level for each playlist video (unpublished)</li>
+                                <li>Levels will be numbered sequentially</li>
+                                <li>Episode number will be auto-incremented</li>
+                                <li>A maximum of <?= $maxPlaylistLevels ?> levels will be imported per playlist</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-buttons">
+                    <button
+                        type="button"
+                        class="btn btn-primary btn-lg"
+                        data-request="onScaffoldEpisodeFromPlaylist"
+                        data-request-success="
+                            $.wn.flashMsg({
+                                text: data.message,
+                                class: 'success',
+                                interval: 5
+                            });
+                            if (data.redirect) {
+                                window.location = data.redirect;
+                                return;
+                            }
+                            $('#game_id').val('');
+                            $('#playlist_url').val('');
+                        "
+                        data-stripe-load-indicator
+                    >
+                        <i class="icon-youtube-play"></i> Create new episode from YouTube playlist
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+<?= Form::close() ?>

@@ -1,0 +1,118 @@
+/* PicoCSS color variables for light and dark themes */
+:root {
+  /* Light theme colors - -300 shades for backgrounds */
+  --menu-color: var(--pico-color-gray-900);
+  --pico-color-red-300: #fca5a5;
+  --pico-color-pink-300: #f9a8d4;
+  --pico-color-purple-300: #d8b4fe;
+  --pico-color-indigo-300: #a5b4fc;
+  --pico-color-blue-300: #93c5fd;
+  --pico-color-cyan-300: #67e8f9;
+  --pico-color-teal-300: #5eead4;
+  --pico-color-green-300: #86efac;
+  --pico-color-lime-300: #bef264;
+  --pico-color-yellow-300: #fcd34d;
+  --pico-color-amber-300: #fcd34d;
+  --pico-color-orange-300: #fdba74;
+  --pico-color-brown-300: #ebb794;
+  --pico-color-gray-300: #d1d5db;
+  --pico-color-slate-300: #cbd5e1;
+  --pico-color-zinc-300: #d4d4d8;
+}
+
+/* Dark theme adjustments */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark theme colors - brighter -300 shades for better contrast */
+    --menu-color: var(--pico-color-gray-100);
+    --pico-color-red-300: #fca5a5;
+    --pico-color-blue-300: #93c5fd;
+    --pico-color-green-300: #86efac;
+    --pico-color-gray-300: #d1d5db;
+    --pico-color-slate-300: #cbd5e1;
+    --pico-color-zinc-300: #d4d4d8;
+  }
+}
+
+.games-menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: var(--pico-spacing);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    a {
+        color: var(--menu-color);
+        text-decoration: none;
+        font-weight: 700;
+        text-transform: uppercase;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__container{
+        margin-top: var(--pico-spacing);
+        border: 1px solid var(--pico-primary);
+        border-radius: var(--pico-border-radius);
+        padding: 0.25em
+    }
+
+    &__item {
+        border: 1px solid var(--pico-muted-border-color);
+        border-radius: var(--pico-border-radius);
+        padding: var(--pico-spacing);
+        background-color: var(--pico-card-background-color);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        &--large {
+            background-color: var(--pico-card-sectioning-background-color);
+            grid-column: span 2;
+
+            &:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            }
+        }
+    }
+}
+
+/* Animate menu open/close */
+details[open] .games-menu {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.games-logo {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+
+    svg {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* PicoCSS background theme colors */
+$colors: red, pink, purple, indigo, blue, cyan, teal, green, lime, yellow, amber, orange, brown, gray, slate, zinc;
+
+@each $color in $colors {
+  .background-#{$color} {
+    background-color: var(--pico-color-#{$color}-300);
+  }
+}

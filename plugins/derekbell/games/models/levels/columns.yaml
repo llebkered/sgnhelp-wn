@@ -1,0 +1,35 @@
+columns:
+    youtube_thumbnail:
+        label: Thumbnail
+        type: partial
+        path: $/derekbell/games/models/levels/_youtube_thumbnail.htm
+        searchable: false
+        sortable: false
+    title:
+        label: Title
+        type: text
+        searchable: true
+    level_number:
+        label: Level #
+        type: number
+        sortable: true
+    youtube_id:
+        label: YouTube ID
+        type: text
+    is_published:
+        label: Published
+        type: partial
+        path: $/derekbell/games/models/levels/_is_published_switch.htm
+        clickable: false
+    is_promoted:
+        label: Promoted
+        type: partial
+        path: $/derekbell/games/models/levels/_is_promoted_switch.htm
+        clickable: false
+    sort_order:
+        label: Sort Order
+        type: number
+        sortable: true
+    updated_at:
+        label: Last Updated
+        type: datetime

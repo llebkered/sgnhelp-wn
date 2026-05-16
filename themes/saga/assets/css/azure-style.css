@@ -1,0 +1,29 @@
+/* Azure theme - Light */
+:root[data-theme="azure"],
+[data-theme="azure"] {
+    --pico-primary: #0ea5e9;
+    --pico-primary-hover: #0284c7;
+    --pico-primary-focus: rgba(14, 165, 233, 0.25);
+    --pico-primary-inverse: #fff;
+    --pico-background-color: #f0f9ff;
+    --pico-color: #1c1917;
+    --pico-card-background-color: #ffffff;
+    --pico-card-border-color: #7dd3fc;
+    --pico-secondary: #38bdf8;
+    --pico-secondary-hover: #0ea5e9;
+}
+
+/* Azure theme - Dark */
+:root[data-theme="azure-dark"],
+[data-theme="azure-dark"] {
+    --pico-primary: #38bdf8;
+    --pico-primary-hover: #7dd3fc;
+    --pico-primary-focus: rgba(56, 189, 248, 0.25);
+    --pico-primary-inverse: #1c1917;
+    --pico-background-color: #0a131e;
+    --pico-color: #f0f9ff;
+    --pico-card-background-color: #101e2e;
+    --pico-card-border-color: #075985;
+    --pico-secondary: #0284c7;
+    --pico-secondary-hover: #0ea5e9;
+}

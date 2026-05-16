@@ -1,0 +1,23 @@
+columns:
+    id:
+        label: id
+        type: number
+    title:
+        label: title
+        type: text
+    url:
+        label: url
+        type: text
+    description:
+        label: description
+        type: text
+    is_published:
+        label: Published
+        type: partial
+        path: $/derekbell/games/models/games/_is_published_switch.htm
+        clickable: false
+    is_promoted:
+        label: Promoted
+        type: partial
+        path: $/derekbell/games/models/games/_is_promoted_switch.htm
+        clickable: false

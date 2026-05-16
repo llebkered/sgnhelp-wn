@@ -1,0 +1,22 @@
+items:
+    -
+        title: Home
+        type: cms-page
+        code: ''
+        reference: home
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: About
+        nesting: 0
+        type: static-page
+        code: ''
+        reference: about
+        replace: 0
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+name: 'Main Menu'

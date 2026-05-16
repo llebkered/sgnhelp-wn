@@ -1,0 +1,18 @@
+<details class="games-menu__container">
+    <summary class="outline contrast">Games Menu</summary>
+    <div class="games-menu" role="navigation" aria-label="Games Menu">
+        {% for game in games %}
+        {% set url = 'game/' ~ game.slug %}
+        <div
+            class="games-menu__item{% if game.is_promoted %} games-menu__item--large{% endif %}{% if game.color_theme and game.color_theme != 'default' %} background-{{ game.color_theme }}{% endif %}"
+        >
+            <a href="{{ url | app }}">
+                {% if game.logo_svg %}
+                <div class="games-logo">{{ game.logo_svg | raw }}</div>
+                {% endif %}
+                {{ game.title }}
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</details>

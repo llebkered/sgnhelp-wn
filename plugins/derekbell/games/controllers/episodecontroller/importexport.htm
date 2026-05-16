@@ -1,0 +1,58 @@
+<div class="layout">
+    <h1>Import/Export Episodes</h1>
+    <form method="POST" data-request="onExportEpisodes">
+        <button type="submit" class="btn btn-primary">Export Episodes</button>
+    </form>
+    <?= $this->makePartial('upload_box') ?>
+    <form method="POST" data-request="onImportEpisodes" style="margin-top:20px;">
+        <input type="hidden" name="uploaded_import_file" id="uploaded_import_file" value="<?= isset($uploadedImportFile) ? e($uploadedImportFile) : '' ?>">
+        <button type="submit" class="btn btn-danger" <?= empty($uploadedImportFile) ? 'disabled' : '' ?>>Import Episodes</button>
+    </form>
+    <p>Exported file: <code>storage/app/episodes-export.zip</code></p>
+    <p>To import, upload a <code>episodes-export.zip</code> file and click Import Episodes.</p>
+
+    <div class="alert alert-info" style="margin-top:20px;">
+        <strong>Import File Format:</strong><br>
+        The import file must be a <b>ZIP archive</b> containing a single <code>episodes.json</code> file.<br>
+        <br>
+        <b>episodes.json</b> should be a JSON array of episode objects. Each object should include the required fields for an episode.<br>
+        <br>
+        <b>Sample <code>episodes.json</code>:</b>
+        <pre style="background:#f8f8f8; border:1px solid #ccc; padding:10px;">
+[
+    {
+        "game_id": 1,
+        "title": "Sample Episode",
+        "slug": "sample-episode",
+        "episode_number": 1,
+        "start_level": 1,
+        "end_level": 10,
+        "excerpt": "Short summary.",
+        "description": "A sample episode for import.",
+        "is_published": true,
+        "is_promoted": false,
+        "sort_order": 1
+    },
+    {
+        "game_id": 2,
+        "title": "Another Episode",
+        "slug": "another-episode",
+        "episode_number": 2,
+        "start_level": 11,
+        "end_level": 20,
+        "excerpt": "Another summary.",
+        "description": "Another example.",
+        "is_published": false,
+        "is_promoted": true,
+        "sort_order": 2
+    }
+]
+        </pre>
+        <ul>
+            <li><b>File type:</b> ZIP archive (.zip)</li>
+            <li><b>Required file inside ZIP:</b> <code>episodes.json</code></li>
+            <li><b>Format:</b> JSON array of objects, one per episode</li>
+            <li><b>Required fields:</b> <code>game_id</code>, <code>title</code>, <code>slug</code>, <code>episode_number</code>, <code>start_level</code>, <code>end_level</code>, <code>excerpt</code>, <code>description</code>, <code>is_published</code>, <code>is_promoted</code>, <code>sort_order</code></li>
+        </ul>
+    </div>
+</div>

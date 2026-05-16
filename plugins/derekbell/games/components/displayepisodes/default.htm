@@ -1,0 +1,33 @@
+<div class="episodes-grid">
+    {% if episodes is empty %}
+        <p>No episodes found.</p>
+    {% else %}
+        <div class="grid-320">
+            {% for episode in episodes %}
+                <article class="episode-card {{ episode.is_promoted ? 'card--promoted' : '' }}">
+                    <h3>
+                        {% if episode.is_promoted %}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="promoted-icon">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                            </svg>
+                        {% endif %}
+                        <a href="/game/{{ game.slug }}/{{ episode.slug }}">
+                            {{ episode.title }}
+                        </a>
+                    </h3>
+
+                    {% if episode.excerpt %}
+                        <p class="episode-excerpt">{{ episode.excerpt }}</p>
+                    {% endif %}
+
+                    <div class="episode-meta">
+                        <span class="episode-number">Episode {{ episode.episode_number }}</span>
+                        {% if episode.start_level and episode.end_level %}
+                            <span class="episode-levels">Levels {{ episode.start_level }}-{{ episode.end_level }}</span>
+                        {% endif %}
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>

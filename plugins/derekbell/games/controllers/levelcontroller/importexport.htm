@@ -1,0 +1,57 @@
+<div class="layout">
+    <h1>Import/Export Levels</h1>
+    <form method="POST" data-request="onExportLevels">
+        <button type="submit" class="btn btn-primary">Export Levels</button>
+    </form>
+    <?= $this->makePartial('upload_box') ?>
+    <form method="POST" data-request="onImportLevels" enctype="multipart/form-data" style="margin-top:20px;">
+        <button type="submit" class="btn btn-danger">Import Levels</button>
+    </form>
+    <p>Exported file: <code>storage/app/levels-export.zip</code></p>
+    <p>To import, upload a <code>levels-export.zip</code> file and click Import Levels.</p>
+
+    <div class="alert alert-info" style="margin-top:20px;">
+        <strong>Import File Format:</strong><br>
+        The import file must be a <b>ZIP archive</b> containing a single <code>levels.json</code> file.<br>
+        <br>
+        <b>levels.json</b> should be a JSON array of level objects. Each object should include the required fields for a level.<br>
+        <br>
+        <b>Sample <code>levels.json</code>:</b>
+        <pre style="background:#f8f8f8; border:1px solid #ccc; padding:10px;">
+[
+    {
+        "episode_id": 1,
+        "title": "Sample Level",
+        "slug": "sample-level",
+        "level_number": 1,
+        "episode_number": 1,
+        "youtube_id": "abc123defgh",
+        "excerpt": "Short summary.",
+        "description": "A sample level for import.",
+        "is_published": true,
+        "is_promoted": false,
+        "sort_order": 1
+    },
+    {
+        "episode_id": 2,
+        "title": "Another Level",
+        "slug": "another-level",
+        "level_number": 2,
+        "episode_number": 2,
+        "youtube_id": "xyz987klmno",
+        "excerpt": "Another summary.",
+        "description": "Another example.",
+        "is_published": false,
+        "is_promoted": true,
+        "sort_order": 2
+    }
+]
+        </pre>
+        <ul>
+            <li><b>File type:</b> ZIP archive (.zip)</li>
+            <li><b>Required file inside ZIP:</b> <code>levels.json</code></li>
+            <li><b>Format:</b> JSON array of objects, one per level</li>
+            <li><b>Required fields:</b> <code>episode_id</code>, <code>title</code>, <code>slug</code>, <code>level_number</code>, <code>episode_number</code>, <code>youtube_id</code>, <code>excerpt</code>, <code>description</code>, <code>is_published</code>, <code>is_promoted</code>, <code>sort_order</code></li>
+        </ul>
+    </div>
+</div>

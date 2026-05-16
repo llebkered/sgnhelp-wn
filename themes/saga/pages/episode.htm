@@ -1,0 +1,83 @@
+title = "Episode"
+url = "/game/:game/:episode"
+layout = "default"
+is_hidden = 0
+
+[displayLevels]
+
+==
+<?php
+use DerekBell\Games\Models\Game;
+use DerekBell\Games\Models\Episode;
+
+
+function onStart() {
+    // get episode id based on game and episode params
+    $game_slug = $this->param('game');
+    $episode_slug = $this->param('episode');
+
+    // get game with logo eager loaded
+    $game = Game::where('slug', $game_slug)
+        ->with('logo')
+        ->first();
+
+    if ($game) {
+        $this['game'] = $game;
+        $this['colorTheme'] = $game->color_theme ?? 'default';
+
+        // fetch episode with levels and their thumbnails eager loaded
+        $episode = Episode::where('game_id', $game->id)
+            ->where('slug', $episode_slug)
+            ->with(['levels' => function($query) {
+                $query->isPublished()
+                    ->with('youtube_thumbnail')
+                    ->orderBy('sort_order', 'asc');
+            }])
+            ->first();
+
+        if ($episode) {
+            $this['episode'] = $episode;
+
+            // Set page title and SEO meta tags
+            $this->page->title = $game->title . ' - ' . $episode->title;
+            $this->page->meta_title = $game->title . ' - ' . $episode->title;
+            $this->page->meta_description = $episode->description ?? 'Explore ' . $episode->title . ' from ' . $game->title;
+        } else {
+            // Handle the case where the episode is not found
+            \Log::error('Episode not found: ' . $episode_slug);
+            return $this->controller->run('404');
+        }
+    } else {
+        // Handle the case where the game is not found
+        \Log::error('Game not found: ' . $game_slug);
+        return $this->controller->run('404');
+    }
+
+    $this->page->title = $game->title . ' - ' . $episode->title;
+    $this->page->meta_title = $game->title . ' - ' . $episode->title;
+    $this->page->meta_description = $episode->description ?? 'Explore ' . $episode->title . ' from ' . $game->title;
+
+}
+?>
+==
+{% put head %}
+    {% if game.color_theme and game.color_theme != 'default' %}
+        <link rel="stylesheet" href="{{ ('assets/css/' ~ game.color_theme ~ '-style.css') | theme }}">
+    {% endif %}
+{% endput %}
+
+{% set colorTheme = game.color_theme %}
+
+<nav aria-label="breadcrumb">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="{{ 'game' | page({slug: game.slug}) }}">{{ game.title }}</a></li>
+        <li>{{ episode.title }}</li>
+    </ul>
+</nav>
+
+<h1>{{ episode.title }}</h1>
+
+{{ episode.description | raw }}
+
+{% component 'displayLevels' %}

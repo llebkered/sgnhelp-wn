@@ -1,0 +1,29 @@
+/* Lime theme - Light */
+:root[data-theme="lime"],
+[data-theme="lime"] {
+    --pico-primary: #84cc16;
+    --pico-primary-hover: #65a30d;
+    --pico-primary-focus: rgba(132, 204, 22, 0.25);
+    --pico-primary-inverse: #fff;
+    --pico-background-color: #f7fee7;
+    --pico-color: #1c1917;
+    --pico-card-background-color: #ffffff;
+    --pico-card-border-color: #bef264;
+    --pico-secondary: #a3e635;
+    --pico-secondary-hover: #84cc16;
+}
+
+/* Lime theme - Dark */
+:root[data-theme="lime-dark"],
+[data-theme="lime-dark"] {
+    --pico-primary: #a3e635;
+    --pico-primary-hover: #bef264;
+    --pico-primary-focus: rgba(163, 230, 53, 0.25);
+    --pico-primary-inverse: #1c1917;
+    --pico-background-color: #0f160a;
+    --pico-color: #f7fee7;
+    --pico-card-background-color: #1a2210;
+    --pico-card-border-color: #365314;
+    --pico-secondary: #65a30d;
+    --pico-secondary-hover: #84cc16;
+}

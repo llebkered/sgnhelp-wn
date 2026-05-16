@@ -1,0 +1,30 @@
+/* Default theme - Light */
+:root,
+:root[data-theme="default"],
+[data-theme="default"] {
+    --pico-primary: #1f6feb;
+    --pico-primary-hover: #1a5bc7;
+    --pico-primary-focus: rgba(31, 111, 235, 0.25);
+    --pico-primary-inverse: #fff;
+    --pico-background-color: #ffffff;
+    --pico-color: #1c1917;
+    --pico-card-background-color: #f8f9fa;
+    --pico-card-border-color: #dee2e6;
+    --pico-secondary: #6c757d;
+    --pico-secondary-hover: #565e64;
+}
+
+/* Default theme - Dark */
+:root[data-theme="default-dark"],
+[data-theme="default-dark"] {
+    --pico-primary: #4d9eff;
+    --pico-primary-hover: #7ab8ff;
+    --pico-primary-focus: rgba(77, 158, 255, 0.25);
+    --pico-primary-inverse: #1c1917;
+    --pico-background-color: #11191f;
+    --pico-color: #e9ecef;
+    --pico-card-background-color: #1a2530;
+    --pico-card-border-color: #2c3e50;
+    --pico-secondary: #8b95a0;
+    --pico-secondary-hover: #adb5bd;
+}

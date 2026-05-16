@@ -1,0 +1,35 @@
+<footer class="footer">
+    <div class="container">
+        <small>
+            &copy; {{ 'now' | date('Y') }} {{ this.theme.sitename }}. All rights
+            reserved.
+        </small>
+        <div class="social-links">
+            {% if this.theme.youtube_url %}
+            <a
+                href="{{ this.theme.youtube_url }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+                >{% partial "include-svg"
+                file="themes/saga/assets/images/youtube.svg" %}</a
+            >
+            {% endif %} {% if this.theme.facebook_url %}
+            <a
+                href="{{ this.theme.facebook_url }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                >{% partial "include-svg"
+                file="themes/saga/assets/images/facebook.svg" %}</a
+            >
+            {% endif %}
+        </div>
+
+    </div>
+    <div class="container">
+        <small>
+            {% content "footer/notice" %}
+        </small>
+    </div>
+</footer>

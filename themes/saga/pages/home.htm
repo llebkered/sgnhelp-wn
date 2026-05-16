@@ -1,0 +1,17 @@
+title = "Home"
+url = "/"
+layout = "default"
+is_hidden = 0
+meta_nofollow = 0
+meta_description = "SGN Help: walkthroughs, tips, and level guides for your favourite games."
+
+[frontPageLevels]
+levelCount = 12
+paginate = 1
+perPage = 12
+pageParam = "page"
+paginationType = "full"
+==
+{% content "home/featured" %}
+<h2>Featured</h2>
+{% component 'frontPageLevels' %}

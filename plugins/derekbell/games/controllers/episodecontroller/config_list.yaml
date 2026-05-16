@@ -1,0 +1,23 @@
+title: EpisodeController
+modelClass: DerekBell\Games\Models\Episode
+list: $/derekbell/games/models/episodes/columns.yaml
+recordUrl: 'derekbell/games/episodecontroller/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+recordsPerPage: 20
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+filter:
+    scopes:
+        game:
+            label: Filter by Game
+            type: group
+            conditions: game_id in (:filtered)
+            modelClass: DerekBell\Games\Models\Game
+            nameFrom: title
+            scope: forFilter
+            emptyOption: All Games
+            order: title asc

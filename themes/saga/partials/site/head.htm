@@ -1,0 +1,44 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="{{ 'assets/images/logo.svg' | theme }}" type="image/svg+xml" />
+<link rel="manifest" href="{{ 'assets/manifest.webmanifest' | theme }}" />
+<meta name="theme-color" content="#1f6feb" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="SagaLevel" />
+<link rel="apple-touch-icon" href="{{ 'assets/images/icon-192.png' | theme }}" />
+{% partial "meta/seo" %}
+{% partial "meta/styles" %}
+<script>
+(function () {
+    var el = document.documentElement;
+    var baseTheme = el.getAttribute('data-theme') || 'default';
+
+    // Store the original game color theme so JS can use it later
+    el.dataset.colorTheme = baseTheme;
+
+    var pref = localStorage.getItem('saga-color-mode') || 'auto';
+
+    function applyMode(pref) {
+        var isDark;
+        if (pref === 'dark')       isDark = true;
+        else if (pref === 'light') isDark = false;
+        else                       isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (baseTheme && baseTheme !== 'default') {
+            el.setAttribute('data-theme', isDark ? baseTheme + '-dark' : baseTheme);
+        } else {
+            if (pref === 'auto') el.removeAttribute('data-theme');
+            else el.setAttribute('data-theme', pref);
+        }
+    }
+
+    applyMode(pref);
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
+        if ((localStorage.getItem('saga-color-mode') || 'auto') === 'auto') {
+            applyMode('auto');
+        }
+    });
+}());
+</script>

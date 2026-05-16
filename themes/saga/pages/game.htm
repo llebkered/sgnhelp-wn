@@ -1,0 +1,56 @@
+title = "Game"
+url = "/game/:slug"
+layout = "default"
+is_hidden = 0
+
+[displayEpisodes]
+
+==
+<?php
+use DerekBell\Games\Models\Game;
+
+function onStart() {
+    // get game based on slug
+    $slug = $this->param('slug');
+
+    $this['game'] = Game::where('slug', $slug)
+            ->with('logo')
+            ->first();
+
+    if (!$this['game']) {
+        return $this->controller->run('404');
+    }
+
+    $this['colorTheme'] = $this['game']->color_theme ?? 'default';
+    $this->page->meta_description = $this['game']->description ?? 'Explore ' . $this['game']->title . ' episodes and levels with walkthroughs, tips, and guides on Saga Level Help.';
+}
+
+function onEnd()
+{
+    if ($this['game']) {
+        $this->page->title = $this['game']->title;
+    }
+}
+?>
+==
+{% put head %}
+    {% if game.color_theme and game.color_theme != 'default' %}
+        <link rel="stylesheet" href="{{ ('assets/css/' ~ game.color_theme ~ '-style.css') | theme }}">
+    {% endif %}
+{% endput %}
+
+<div class="game-hero">
+    {% if game.logo %}
+    <img class="game-hero__logo" src="{{ game.logo.getPath() }}" alt="{{ game.title }} logo">
+    {% endif %}
+    <div class="game-hero__info">
+        <h1>{{ this.page.title }}</h1>
+        {% if game.description %}
+        {{ game.description | raw }}
+        {% endif %}
+    </div>
+</div>
+
+<h2>Episodes</h2>
+
+{% component 'displayEpisodes' %}

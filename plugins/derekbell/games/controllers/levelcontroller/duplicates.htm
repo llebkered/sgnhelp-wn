@@ -1,0 +1,90 @@
+<?php Block::put('breadcrumb') ?>
+    <ul>
+        <li><a href="<?= Backend::url('derekbell/games/levelcontroller') ?>">Levels</a></li>
+        <li><?= e($this->pageTitle) ?></li>
+    </ul>
+<?php Block::endPut() ?>
+
+<?php
+    $sortUrl = function ($column) use ($sortColumn, $sortDirection) {
+        $direction = $sortColumn === $column && $sortDirection === 'asc' ? 'desc' : 'asc';
+        return Backend::url('derekbell/games/levelcontroller/duplicates') . '?sort=' . urlencode($column) . '&dir=' . urlencode($direction);
+    };
+
+    $sortIndicator = function ($column) use ($sortColumn, $sortDirection) {
+        if ($sortColumn !== $column) {
+            return '';
+        }
+
+        return $sortDirection === 'asc' ? ' ↑' : ' ↓';
+    };
+?>
+
+<div class="layout">
+    <div class="control-toolbar">
+        <div class="toolbar-item">
+            <a href="<?= Backend::url('derekbell/games/levelcontroller') ?>" class="btn btn-default oc-icon-angle-left">
+                Back to Levels
+            </a>
+        </div>
+    </div>
+
+    <p class="help-block">
+        This page flags duplicate levels by matching title, slug, or YouTube ID after trimming whitespace and ignoring case. Select the duplicate records you want to remove. Deletions use the model delete flow, so levels are soft-deleted.
+    </p>
+
+    <?php if ($duplicateLevels->isEmpty()): ?>
+        <p class="flash-message static success">No duplicate levels were found.</p>
+    <?php else: ?>
+        <?= Form::open(['data-request' => 'onDeleteDuplicates']) ?>
+            <div class="form-buttons" style="margin-bottom: 16px;">
+                <button
+                    type="submit"
+                    class="btn btn-danger"
+                    data-request-confirm="Delete the selected duplicate levels?">
+                    Delete Selected Duplicates
+                </button>
+            </div>
+
+            <div class="control-list list-flush">
+                <table class="table data">
+                    <thead>
+                        <tr>
+                            <th style="width: 40px;"></th>
+                            <th><a href="<?= $sortUrl('id') ?>">ID<?= $sortIndicator('id') ?></a></th>
+                            <th><a href="<?= $sortUrl('title') ?>">Title<?= $sortIndicator('title') ?></a></th>
+                            <th><a href="<?= $sortUrl('slug') ?>">Slug<?= $sortIndicator('slug') ?></a></th>
+                            <th><a href="<?= $sortUrl('youtube_id') ?>">YouTube ID<?= $sortIndicator('youtube_id') ?></a></th>
+                            <th><a href="<?= $sortUrl('episode') ?>">Episode<?= $sortIndicator('episode') ?></a></th>
+                            <th><a href="<?= $sortUrl('game') ?>">Game<?= $sortIndicator('game') ?></a></th>
+                            <th><a href="<?= $sortUrl('reasons') ?>">Duplicate Reason<?= $sortIndicator('reasons') ?></a></th>
+                            <th><a href="<?= $sortUrl('is_published') ?>">Published<?= $sortIndicator('is_published') ?></a></th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($duplicateLevels as $row): ?>
+                            <?php $level = $row['level']; ?>
+                            <tr>
+                                <td><input type="checkbox" name="level_ids[]" value="<?= $level->id ?>"></td>
+                                <td><?= $level->id ?></td>
+                                <td><?= e($level->title) ?></td>
+                                <td><?= e($level->slug) ?></td>
+                                <td><?= e($level->youtube_id) ?></td>
+                                <td><?= e(optional($level->episode)->title) ?></td>
+                                <td><?= e(optional(optional($level->episode)->game)->title) ?></td>
+                                <td><?= e($row['reasons']) ?></td>
+                                <td><?= $level->is_published ? 'Yes' : 'No' ?></td>
+                                <td>
+                                    <a href="<?= Backend::url('derekbell/games/levelcontroller/update/' . $level->id) ?>" class="btn btn-xs btn-default">
+                                        Open
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div>
+        <?= Form::close() ?>
+    <?php endif ?>
+</div>

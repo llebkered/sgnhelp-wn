@@ -1,0 +1,29 @@
+/* Fuchsia theme - Light */
+:root[data-theme="fuchsia"],
+[data-theme="fuchsia"] {
+    --pico-primary: #d946ef;
+    --pico-primary-hover: #c026d3;
+    --pico-primary-focus: rgba(217, 70, 239, 0.25);
+    --pico-primary-inverse: #fff;
+    --pico-background-color: #fdf4ff;
+    --pico-color: #1c1917;
+    --pico-card-background-color: #ffffff;
+    --pico-card-border-color: #f0abfc;
+    --pico-secondary: #e879f9;
+    --pico-secondary-hover: #d946ef;
+}
+
+/* Fuchsia theme - Dark */
+:root[data-theme="fuchsia-dark"],
+[data-theme="fuchsia-dark"] {
+    --pico-primary: #e879f9;
+    --pico-primary-hover: #f0abfc;
+    --pico-primary-focus: rgba(232, 121, 249, 0.25);
+    --pico-primary-inverse: #1c1917;
+    --pico-background-color: #1a0a1e;
+    --pico-color: #fdf4ff;
+    --pico-card-background-color: #2a102e;
+    --pico-card-border-color: #86198f;
+    --pico-secondary: #c026d3;
+    --pico-secondary-hover: #d946ef;
+}

@@ -1,0 +1,29 @@
+/* Pumpkin theme - Light */
+:root[data-theme="pumpkin"],
+[data-theme="pumpkin"] {
+    --pico-primary: #f97316;
+    --pico-primary-hover: #ea580c;
+    --pico-primary-focus: rgba(249, 115, 22, 0.25);
+    --pico-primary-inverse: #fff;
+    --pico-background-color: #fff7ed;
+    --pico-color: #1c1917;
+    --pico-card-background-color: #ffffff;
+    --pico-card-border-color: #fdba74;
+    --pico-secondary: #fb923c;
+    --pico-secondary-hover: #f97316;
+}
+
+/* Pumpkin theme - Dark */
+:root[data-theme="pumpkin-dark"],
+[data-theme="pumpkin-dark"] {
+    --pico-primary: #fb923c;
+    --pico-primary-hover: #fdba74;
+    --pico-primary-focus: rgba(251, 146, 60, 0.25);
+    --pico-primary-inverse: #1c1917;
+    --pico-background-color: #160f0a;
+    --pico-color: #fff7ed;
+    --pico-card-background-color: #221a10;
+    --pico-card-border-color: #7c2d12;
+    --pico-secondary: #ea580c;
+    --pico-secondary-hover: #f97316;
+}

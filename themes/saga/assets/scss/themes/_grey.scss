@@ -1,0 +1,29 @@
+/* Grey theme - Light */
+:root[data-theme="grey"],
+[data-theme="grey"] {
+    --pico-primary: #6b7280;
+    --pico-primary-hover: #4b5563;
+    --pico-primary-focus: rgba(107, 114, 128, 0.25);
+    --pico-primary-inverse: #fff;
+    --pico-background-color: #f9fafb;
+    --pico-color: #1c1917;
+    --pico-card-background-color: #ffffff;
+    --pico-card-border-color: #d1d5db;
+    --pico-secondary: #9ca3af;
+    --pico-secondary-hover: #6b7280;
+}
+
+/* Grey theme - Dark */
+:root[data-theme="grey-dark"],
+[data-theme="grey-dark"] {
+    --pico-primary: #9ca3af;
+    --pico-primary-hover: #d1d5db;
+    --pico-primary-focus: rgba(156, 163, 175, 0.25);
+    --pico-primary-inverse: #1c1917;
+    --pico-background-color: #111214;
+    --pico-color: #f9fafb;
+    --pico-card-background-color: #1f2024;
+    --pico-card-border-color: #374151;
+    --pico-secondary: #4b5563;
+    --pico-secondary-hover: #6b7280;
+}

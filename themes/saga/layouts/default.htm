@@ -1,0 +1,24 @@
+description = "Default layout"
+useContent = 1
+default = 0
+[staticPage]
+==
+<!DOCTYPE html>
+<html lang="en" {% if colorTheme is defined and colorTheme and colorTheme != 'default' %}data-theme="{{ colorTheme }}"{% endif %}>
+<head>
+    {% partial "site/head" %}
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    {% partial "site/header" %}
+    {% partial "site/navigation" %}
+    <main id="main-content">
+        <div class="container">
+        {% page %}
+        </div>
+    </main>
+
+    {% partial "site/footer" %}
+    {% partial "site/scripts" %}
+</body>
+</html>

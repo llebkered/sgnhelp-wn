@@ -1,0 +1,6 @@
+.card {
+    &--large {
+        background-color: var(--pico-card-sectioning-background-color);
+        grid-column: span 2;
+    }
+}
