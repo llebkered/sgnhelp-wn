@@ -75,6 +75,59 @@ class Plugin extends PluginBase
     }
 
     /**
+     * Register search handlers for the Winter.Search plugin
+     */
+    public function registerSearchHandlers()
+    {
+        return [
+            'games' => [
+                'name' => 'Games',
+                'model' => \DerekBell\Games\Models\Game::class,
+                'record' => function ($model, $query) {
+                    if (!$model->is_published) {
+                        return false;
+                    }
+                    return [
+                        'title' => $model->title,
+                        'description' => $model->excerpt,
+                        'url' => '/game/' . $model->slug,
+                    ];
+                },
+            ],
+            'episodes' => [
+                'name' => 'Episodes',
+                'model' => \DerekBell\Games\Models\Episode::class,
+                'record' => function ($model, $query) {
+                    if (!$model->is_published) {
+                        return false;
+                    }
+                    return [
+                        'title' => $model->title,
+                        'description' => $model->excerpt,
+                        'url' => '/game/' . optional($model->game)->slug . '/' . $model->slug,
+                    ];
+                },
+            ],
+            'levels' => [
+                'name' => 'Levels',
+                'model' => \DerekBell\Games\Models\Level::class,
+                'record' => function ($model, $query) {
+                    if (!$model->is_published) {
+                        return false;
+                    }
+                    $episode = $model->episode;
+                    $game = optional($episode)->game;
+                    return [
+                        'title' => $model->title,
+                        'description' => $model->excerpt,
+                        'url' => '/game/' . optional($game)->slug . '/' . optional($episode)->slug . '/' . $model->slug,
+                    ];
+                },
+            ],
+        ];
+    }
+
+    /**
      * Register plugin routes
      */
     public function boot()

@@ -1,6 +1,6 @@
 {
-    "name": "Saga Level Help",
-    "short_name": "SagaLevel",
+    "name": "Jam City Games Help",
+    "short_name": "JamCityHelp",
     "description": "Game walkthrough and level guides for your favourite games",
     "start_url": "/?source=pwa",
     "id": "/",

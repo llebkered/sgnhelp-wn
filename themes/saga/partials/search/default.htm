@@ -1,0 +1,23 @@
+{{ form_ajax(__SELF__ ~ '::onSearch') }}
+
+    {% partial SELF ~ '::form' %}
+
+{{ form_close() }}
+
+<div id="{{ __SELF__.getId('results') }}">
+    {% if not query %}
+        {% partial SELF ~ '::no-query' %}
+    {% endif %}
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var params = new URLSearchParams(window.location.search);
+    var query = params.get('query');
+    if (query) {
+        var input = document.querySelector('input[name="query"]');
+        if (input) { input.value = query; }
+        $.request('{{ __SELF__ }}::onSearch', { data: { query: query } });
+    }
+});
+</script>

@@ -1,38 +1,47 @@
 <header class="header">
-    <div class=" header__inner container">
+    <div class="header__inner container">
         <div class="logo">
-            <a href="{{ '/' | app }}" aria-label="{{ this.theme.sitename }} home"
+            <a
+                href="{{ '/' | app }}"
+                aria-label="{{ this.theme.sitename }} home"
                 >{% partial "include-svg"
                 file="themes/saga/assets/images/logo.svg" %}</a
             >
         </div>
 
         <div class="title">{{ this.theme.sitename }}</div>
-        <div class="color-mode-switcher" role="group" aria-label="Colour mode">
-            <button
-                class="color-mode-switcher__btn outline"
-                data-mode="auto"
-                aria-label="Auto (system preference)"
-                title="Auto (system preference)"
+        <div>
+            <div class="search-form">{% partial "site/header-search" %}</div>
+            <div
+                class="color-mode-switcher"
+                role="group"
+                aria-label="Colour mode"
             >
-                Auto
-            </button>
-            <button
-                class="color-mode-switcher__btn outline"
-                data-mode="light"
-                aria-label="Light mode"
-                title="Light mode"
-            >
-                &#9728;
-            </button>
-            <button
-                class="color-mode-switcher__btn outline"
-                data-mode="dark"
-                aria-label="Dark mode"
-                title="Dark mode"
-            >
-                &#9790;
-            </button>
+                <button
+                    class="color-mode-switcher__btn outline"
+                    data-mode="auto"
+                    aria-label="Auto (system preference)"
+                    title="Auto (system preference)"
+                >
+                    Auto
+                </button>
+                <button
+                    class="color-mode-switcher__btn outline"
+                    data-mode="light"
+                    aria-label="Light mode"
+                    title="Light mode"
+                >
+                    &#9728;
+                </button>
+                <button
+                    class="color-mode-switcher__btn outline"
+                    data-mode="dark"
+                    aria-label="Dark mode"
+                    title="Dark mode"
+                >
+                    &#9790;
+                </button>
+            </div>
         </div>
     </div>
 </header>

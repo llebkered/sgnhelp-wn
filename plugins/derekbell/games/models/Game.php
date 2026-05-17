@@ -13,6 +13,20 @@ class Game extends Model
     use \Winter\Storm\Database\Traits\SoftDelete;
     use \Winter\Storm\Database\Traits\Sluggable;
 
+
+    // Implements the Winter.Search searchable behaviour for full-text search integration
+    public $implement = [
+        \Winter\Search\Behaviors\Searchable::class,
+    ];
+
+    public $searchable = [
+        'title',
+        'slug',
+        'excerpt',
+        'description',
+    ];
+
+
     /**
      * @var array Dates to cast as Carbon instances
      */

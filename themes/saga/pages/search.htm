@@ -1,0 +1,17 @@
+title = "Search"
+url = "/search"
+layout = "default"
+is_hidden = 0
+meta_title = "Site Search"
+meta_description = "Search the site for games, episodes, and levels."
+meta_keywords = "search, games, episodes, levels"
+
+[search]
+handler[] = "games"
+handler[] = "episodes"
+handler[] = "levels"
+==
+
+
+<h1>Search</h1>
+{% component 'search' %}
