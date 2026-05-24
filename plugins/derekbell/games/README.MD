@@ -236,7 +236,7 @@ Shows levels for a specific game episode.
 ```
 
 ### FrontPageLevels Component
-Displays recent or featured levels on the homepage.
+Displays promoted & published levels and promoted & published episodes (with their published levels) on the homepage.
 
 **Usage:**
 ```twig
@@ -244,10 +244,21 @@ Displays recent or featured levels on the homepage.
 ```
 
 **Properties:**
-- `levelCount` - Number of levels to display (default: 12, 0 = featured only)
+| Property | Type | Default | Description |
+|---|---|---|---|
+| `levelCount` | number | `12` | Max promoted levels to display. `0` = all. |
+| `paginate` | checkbox | `true` | Enable pagination for the levels grid. |
+| `perPage` | number | `12` | Levels per page when pagination is enabled. |
+| `pageParam` | string | `page` | Query parameter name used in pagination links. |
+| `paginationType` | dropdown | `full` | `simple` (Prev/Next only) or `full` (page numbers). |
 
 **Page Variables:**
-- `levels` - Collection of levels with eager-loaded relationships
+- `levels` — Collection of promoted + published levels, with eager-loaded `episode`, `episode.game`, and `youtube_thumbnail`. Paginated or limited by `levelCount`.
+- `episodes` — Collection of promoted + published episodes, each with eager-loaded `game` and published `levels` (ordered by `sort_order`).
+
+**Template Output:**
+1. A `grid-320` of promoted + published levels with pagination.
+2. Per-episode `<section>` blocks for each promoted + published episode, each containing a `grid-320` of all published levels in that episode.
 
 ## Caching System
 
