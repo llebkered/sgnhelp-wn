@@ -953,3 +953,23 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Support
 
 For issues, questions, or feature requests, please use the GitHub issue tracker or contact the plugin maintainer.
+
+## Version Control: Adding a Git Remote
+
+To add the GitHub repository as a remote for your local project, run the following command in your project root:
+
+```bash
+git remote add origin https://github.com/llebkered/sgnhelp-wn
+```
+
+If you already have a remote named `origin`, use a different name (e.g., `github`):
+
+```bash
+git remote add github https://github.com/llebkered/sgnhelp-wn
+```
+
+To verify your remotes:
+
+```bash
+git remote -v
+```

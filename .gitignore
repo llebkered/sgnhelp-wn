@@ -63,5 +63,7 @@ tests/_support/_generated/
 .env.*
 
 
+/cgi-bin/
+
 # Ignore generated public directory from `winter:mirror public`
 public
