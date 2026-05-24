@@ -4,6 +4,7 @@ namespace DerekBell\Games\Components;
 
 use Cms\Classes\ComponentBase;
 use DerekBell\Games\Models\Level;
+use DerekBell\Games\Models\Episode;
 use DerekBell\Games\Helpers\CacheHelper;
 use DerekBell\Games\Jobs\AttachYoutubeThumbnail;
 
@@ -73,10 +74,9 @@ class FrontPageLevels extends ComponentBase
      */
     public function onRun()
     {
-        // Load the levels from the database
+        // Load the levels and episodes from the database
         $this->page['levels'] = $this->loadLevels();
-
-
+        $this->page['episodes'] = $this->loadEpisodes();
     }
 
     /**
@@ -91,12 +91,12 @@ class FrontPageLevels extends ComponentBase
         $pageParam = $this->property('pageParam') ?: 'page';
         $paginationType = $this->property('paginationType') ?: 'full';
 
-        // Published levels
+        // Promoted and published levels
         $query = Level::isPublished()
+            ->isPromoted()
             ->with('episode')
             ->with('episode.game')
             ->with('youtube_thumbnail')
-            ->orderBy('is_promoted', 'desc')
             ->orderBy('updated_at', 'desc');
 
         if ($levelCount === 0) {
@@ -118,7 +118,7 @@ class FrontPageLevels extends ComponentBase
                 ->get();
         }
 
-        // Batch dispatch thumbnail attachment jobs for levels without thumbnails
+        // Batch-dispatch thumbnail attachment jobs for levels without thumbnails
         foreach ($levels as $level) {
             if ($level->youtube_thumbnail === null && $level->youtube_id !== null) {
                 AttachYoutubeThumbnail::dispatch($level);
@@ -126,5 +126,20 @@ class FrontPageLevels extends ComponentBase
         }
 
         return $levels;
+    }
+
+    /**
+     * Loads promoted and published episodes from the database
+     */
+    protected function loadEpisodes()
+    {
+        return Episode::isPublished()
+            ->isPromoted()
+            ->with('game')
+            ->with(['levels' => function ($query) {
+                $query->isPublished()->orderBy('sort_order', 'asc');
+            }])
+            ->orderBy('updated_at', 'desc')
+            ->get();
     }
 }

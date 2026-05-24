@@ -1,16 +1,11 @@
-<div class="grid-320">
-    {% for level in levels %}
-
+{% macro levelCard(level) %}
     {% set levelUrl = 'game/' ~ level.episode.game.slug ~ '/' ~ level.episode.slug ~ '/' ~ level.slug %}
-
     <article class="level">
-
         <header>
             <h3>
                 <a href="{{ levelUrl | app }}">{{ level.episode.game.title }} - {{ level.title }}</a>
             </h3>
         </header>
-
         {% if level.youtube_thumbnail %}
         <a href="{{ levelUrl | app }}">
             <img
@@ -38,7 +33,30 @@
             <p>{{ level.description }}</p>
         </footer>
     </article>
+{% endmacro %}
+
+{% import _self as macros %}
+
+{% if levels is not empty %}
+<div class="grid-320">
+    {% for level in levels %}
+        {{ macros.levelCard(level) }}
     {% endfor %}
 </div>
-
 {% partial __SELF__ ~ '::pagination' paginator=levels %}
+{% endif %}
+
+{% for episode in episodes %}
+{% if episode.levels is not empty %}
+<section class="episode-levels">
+    <h2>
+        <a href="{{ ('game/' ~ episode.game.slug ~ '/' ~ episode.slug) | app }}">{{ episode.title }}</a>
+    </h2>
+    <div class="grid-320">
+        {% for level in episode.levels %}
+            {{ macros.levelCard(level) }}
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+{% endfor %}
